@@ -1,0 +1,1 @@
+import { Articulo } from "./lib/modelos.mjs";
