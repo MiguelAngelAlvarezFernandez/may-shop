@@ -7,7 +7,7 @@ const db = new Sequelize({
 
 const Articulo = db.define('Articulo', {
     denominacion: {
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING
     },
     descripcion: {
         type: DataTypes.STRING
