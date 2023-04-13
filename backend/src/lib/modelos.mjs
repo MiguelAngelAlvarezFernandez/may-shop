@@ -50,20 +50,6 @@ const DetalleCarrito = db.define('DetalleCarrito', {
     },
     IVA: {
         type: DataTypes.NUMBER
-    },
-    ArticuloId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: Articulo,
-          key: 'id'
-        }
-    },
-    CarritoId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: Carrito,
-          key: 'id'
-        }
     }
 });
 
@@ -116,8 +102,11 @@ Carrito.belongsToMany(Articulo, { through: DetalleCarrito });
 Cliente.hasMany(Carrito)
 Carrito.belongsTo(Cliente)
 
-Cliente.hasOne(Usuario);
-Usuario.belongsTo(Cliente);
+Cliente.hasOne(Usuario)
+Usuario.belongsTo(Cliente)
+
+Familia.hasOne(Familia);
+Familia.belongsTo(Familia);
 
 await db.sync({ alter: true })
 
