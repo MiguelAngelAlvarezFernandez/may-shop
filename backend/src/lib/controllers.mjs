@@ -20,7 +20,17 @@ async function controladorNuevaMarca(peticion, respuesta) {
     }
 }
 
+async function controladorRecuperarMarcas(_, respuesta) {
+    try {
+        respuesta.json(await Marca.findAll())
+    } catch (error) {
+        respuesta.status(500)
+        respuesta.send('Error.')
+    }
+}
+
 export {
     controladorNuevoArticulo,
-    controladorNuevaMarca
+    controladorNuevaMarca,
+    controladorRecuperarMarcas
 }

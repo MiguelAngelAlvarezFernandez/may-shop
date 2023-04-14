@@ -3,7 +3,8 @@ import cors from "cors"
 
 import { 
     controladorNuevoArticulo,
-    controladorNuevaMarca
+    controladorNuevaMarca,
+    controladorRecuperarMarcas
 } from "./lib/controllers.mjs"
 
 const app = express()
@@ -14,6 +15,7 @@ app.use(express.json())
 app.post("/Articulo/", controladorNuevoArticulo)
 
 app.post("/Marca/", controladorNuevaMarca)
+app.get("/Marca/", controladorRecuperarMarcas)
 
 
 
