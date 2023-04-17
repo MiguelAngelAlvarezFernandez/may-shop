@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function AddArticle() {
 
@@ -16,7 +16,8 @@ function AddArticle() {
         setArticulos(datos)
     }*/
 
-    async function recuperarMarcas() {
+    useEffect(
+        ()=> async function recuperarMarcas() {
         try {
             const respuesta = await fetch("http://localhost:8000/Marca/")
             if (respuesta.ok) {
@@ -29,14 +30,14 @@ function AddArticle() {
             console.error(excepcion)
             alert(excepcion)
         }
-    } 
+        },
+        []
+    ) 
 
   return (
     <>
         <h2>Lista de Marcas</h2>
-        <button onClick={recuperarMarcas}>Lista Marcas</button>
-        <ul>{Marcas.map( marca => <li>{marca.nombre}</li> )}</ul> 
-
+       
         <h2>Añadir Articulo</h2>
             <label>
                 Denominacion
@@ -54,16 +55,20 @@ function AddArticle() {
                 Novedad
                 <input type="checkbox" value="novedad"/>
             </label>
-            <select name="Marcas">
+            <label>
+                Selecciona una marca:
+                <select name="Marcas">
                 {Marcas.map( marca => <option value={marca.id}>{marca.nombre}</option> )}
-                {/*<option value="Marca2">Marca 2</option>
-                <option value="Marca3">Marca 3</option>*/}
-            </select>
-            <select name="Familias">
-                <option value="Familia1">Familia 1</option>
-                <option value="Familia2">Familia 2</option>
-                <option value="Familia3">Familia 3</option>
-            </select>
+                </select>
+            </label>
+            <label>
+                Selecciona una familia:
+                <select name="Familias">
+                    <option value="Familia1">Familia 1</option>
+                    <option value="Familia2">Familia 2</option>
+                    <option value="Familia3">Familia 3</option>
+                </select>
+            </label>
             <button>Enviar</button>
     </>
   );
