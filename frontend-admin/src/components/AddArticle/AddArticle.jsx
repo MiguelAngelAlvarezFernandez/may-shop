@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import {recuperarMarcas} from "../../lib/fetch.mjs" 
 
 function AddArticle() {
 
@@ -17,27 +18,16 @@ function AddArticle() {
     }*/
 
     useEffect(
-        ()=> async function recuperarMarcas() {
-        try {
-            const respuesta = await fetch("http://localhost:8000/Marca/")
-            if (respuesta.ok) {
-                const datos = await respuesta.json()
-                setMarcas(datos)
-            } else {
-                alert("Uuups! Non poidemos recuperar a lista de autores. Intentao de novo.")
-            }
-        } catch (excepcion) {
-            console.error(excepcion)
-            alert(excepcion)
-        }
+        ()=> function manejadorRecuperarMarcas() {
+            recuperarMarcas(manejadorDatos)
         },
         []
     ) 
-
+    function manejadorDatos(Datos) {
+        setMarcas(Datos)
+    }
   return (
     <>
-        <h2>Lista de Marcas</h2>
-       
         <h2>Añadir Articulo</h2>
             <label>
                 Denominacion
