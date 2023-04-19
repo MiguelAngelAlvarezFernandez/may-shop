@@ -29,8 +29,24 @@ async function controladorRecuperarMarcas(_, respuesta) {
     }
 }
 
+async function controladorDeleteMarcas (peticion, respuesta) {
+    try{
+        const marcaToDelete = await Marca.findByPk(peticion.params.id)
+        if (! marcaToDelete) {respuesta.status(404).send("Marca not found")}
+        else {
+            marcaToDelete.destroy()
+            respuesta.status(200).send("Marca borrada")
+        }
+    }
+    catch(error){
+        respuesta.status(500)
+        respuesta.send('Error.')
+    }
+}
+
 export {
     controladorNuevoArticulo,
     controladorNuevaMarca,
-    controladorRecuperarMarcas
+    controladorRecuperarMarcas,
+    controladorDeleteMarcas
 }
