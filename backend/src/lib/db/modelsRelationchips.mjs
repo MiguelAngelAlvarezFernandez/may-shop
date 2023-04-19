@@ -27,10 +27,12 @@ Carrito.belongsTo(Cliente)
 Cliente.hasOne(Usuario)
 Usuario.belongsTo(Cliente)
 
-Familia.hasOne(Familia);
+Familia.hasMany(Familia);
 Familia.belongsTo(Familia);
 
+await db.query('PRAGMA foreign_keys = false;');
 await db.sync({ alter: true })
+await db.query('PRAGMA foreign_keys = true;');
 
 export {
     Articulo,
