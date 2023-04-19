@@ -27,7 +27,7 @@ Carrito.belongsTo(Cliente)
 Cliente.hasOne(Usuario)
 Usuario.belongsTo(Cliente)
 
-Familia.hasMany(Familia);
+Familia.hasMany(Familia, {as: "Subfamilias"});
 Familia.belongsTo(Familia);
 
 await db.query('PRAGMA foreign_keys = false;');
