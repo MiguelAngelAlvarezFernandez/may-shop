@@ -5,6 +5,7 @@ function AddArticle() {
 
     const [ Marcas, setMarcas] = useState([])
     const [Familias, setFamilias] =useState([])
+    const [mostrarFamilia, setmostrarFamilia]=useState(false)
 
     /*fetch("http://localhost:8000/Marca/").then( respuesta => {
         respuesta.json().then( datos=> {
@@ -20,17 +21,14 @@ function AddArticle() {
 
     useEffect(
         ()=> function manejadorRecuperarMarcas() {
-            recuperarMarcas(manejadorDatosMarcas)
-            recuperarFamilias(manejadorDatosFamilias)
+            recuperarMarcas(setMarcas)
+            recuperarFamilias(setFamilias)
         },
         []
     ) 
-    function manejadorDatosMarcas(Datos) {
-        setMarcas(Datos)
-    }
 
-    function manejadorDatosFamilias(Datos) {
-        setFamilias(Datos)
+    function monstrarFamilias () {
+        setmostrarFamilia(!mostrarFamilia)
     }
 
   return (
@@ -58,12 +56,17 @@ function AddArticle() {
                 {Marcas.map( marca => <option value={marca.id}>{marca.nombre}</option> )}
                 </select>
             </label>
-            <label>
-                Selecciona una familia:
-                <select name="Familias">
-                {Familias.map (familia => <option value={familia.id}>{familia.nombre}</option>)}    
-                </select>
-            </label>
+
+            <button onClick={monstrarFamilias}>Selecciona una familia</button>
+
+            {
+                mostrarFamilia===true &&
+                Familias.map (familia => <label>
+                <input type = "checkbox" name = {familia.nombre} value = {familia.id}/>
+                {familia.nombre}
+                </label>)
+            }
+        
             <button>Enviar</button>
     </>
   );

@@ -1,9 +1,9 @@
-async function recuperarMarcas(callBackDatos=()=>{}) {
+async function recuperarMarcas(setter=()=>{}) {
     try {
         const respuesta = await fetch("http://localhost:8000/Marca/")
         if (respuesta.ok) {
             const datos = await respuesta.json()
-            callBackDatos(datos)
+            setter(datos)
         } else {
             alert("Uuups! No podemos recuperar la lista de marcas. Intentalo de nuevo.")
         }
@@ -13,12 +13,12 @@ async function recuperarMarcas(callBackDatos=()=>{}) {
     }
     }
     
-    async function recuperarFamilias(callBackDatos=()=>{}) {
+    async function recuperarFamilias(setter=()=>{}) {
         try {
             const respuesta = await fetch("http://localhost:8000/Familia/")
             if (respuesta.ok) {
                 const datos = await respuesta.json()
-                callBackDatos(datos)
+                setter(datos)
             } else {
                 alert("Uuups! No podemos recuperar la lista de marcas. Intentalo de nuevo.")
             }
@@ -27,6 +27,7 @@ async function recuperarMarcas(callBackDatos=()=>{}) {
             alert(excepcion)
         }
         }
+
     export {
         recuperarMarcas,
         recuperarFamilias
