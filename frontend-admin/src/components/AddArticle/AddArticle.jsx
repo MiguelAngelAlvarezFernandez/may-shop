@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
-import {recuperarMarcas} from "../../lib/fetch.mjs" 
+import {recuperarMarcas, recuperarFamilias} from "../../lib/fetch.mjs" 
 
 function AddArticle() {
 
     const [ Marcas, setMarcas] = useState([])
+    const [Familias, setFamilias] =useState([])
 
     /*fetch("http://localhost:8000/Marca/").then( respuesta => {
         respuesta.json().then( datos=> {
@@ -19,13 +20,19 @@ function AddArticle() {
 
     useEffect(
         ()=> function manejadorRecuperarMarcas() {
-            recuperarMarcas(manejadorDatos)
+            recuperarMarcas(manejadorDatosMarcas)
+            recuperarFamilias(manejadorDatosFamilias)
         },
         []
     ) 
-    function manejadorDatos(Datos) {
+    function manejadorDatosMarcas(Datos) {
         setMarcas(Datos)
     }
+
+    function manejadorDatosFamilias(Datos) {
+        setFamilias(Datos)
+    }
+
   return (
     <>
         <h2>Añadir Articulo</h2>
@@ -54,9 +61,7 @@ function AddArticle() {
             <label>
                 Selecciona una familia:
                 <select name="Familias">
-                    <option value="Familia1">Familia 1</option>
-                    <option value="Familia2">Familia 2</option>
-                    <option value="Familia3">Familia 3</option>
+                {Familias.map (familia => <option value={familia.id}>{familia.nombre}</option>)}    
                 </select>
             </label>
             <button>Enviar</button>
