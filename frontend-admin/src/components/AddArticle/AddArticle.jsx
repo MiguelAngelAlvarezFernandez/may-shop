@@ -3,9 +3,15 @@ import {recuperarMarcas, recuperarFamilias} from "../../lib/fetch.mjs"
 
 function AddArticle() {
 
-    const [ Marcas, setMarcas] = useState([])
+    const [Marcas, setMarcas] = useState([])
     const [Familias, setFamilias] =useState([])
     const [mostrarFamilia, setmostrarFamilia]=useState(false)
+
+    const [ Denominacion, setDenominacion] = useState("")
+    const [ Descripción, setDescripción] = useState("")
+    const [ PrecioBruto, setPrecioBruto] = useState("")
+    const [ Novedad, setNovedad] = useState(true)
+    const [ Marca, setMarca] = useState("")
 
     /*fetch("http://localhost:8000/Marca/").then( respuesta => {
         respuesta.json().then( datos=> {
@@ -58,7 +64,6 @@ function AddArticle() {
             </label>
 
             <button onClick={monstrarFamilias}>Selecciona una familia</button>
-
             {
                 mostrarFamilia===true &&
                 Familias.map (familia => <label>
