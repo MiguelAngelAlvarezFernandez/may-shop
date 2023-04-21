@@ -1,6 +1,6 @@
 async function recuperarMarcas(setter=()=>{}) {
     try {
-        const respuesta = await fetch("http://localhost:8000/Marca/")
+        const respuesta = await fetch("http://localhost:8000/api/v1.0/Marca/")
         if (respuesta.ok) {
             const datos = await respuesta.json()
             setter(datos)
@@ -15,7 +15,7 @@ async function recuperarMarcas(setter=()=>{}) {
     
     async function recuperarFamilias(setter=()=>{}) {
         try {
-            const respuesta = await fetch("http://localhost:8000/Familia/")
+            const respuesta = await fetch("http://localhost:8000/api/v1.0/Familia/")
             if (respuesta.ok) {
                 const datos = await respuesta.json()
                 setter(datos)
