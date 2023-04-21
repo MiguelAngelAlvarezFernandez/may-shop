@@ -15,15 +15,15 @@ app.use(cors())
 app.use(express.json())
 
 
-app.post("/Articulo/", controladorNuevoArticulo)
+app.post("/api/v1.0/Articulo/", controladorNuevoArticulo)
 
-app.post("/Marca/", controladorNuevaMarca)
-app.get("/Marca/", controladorRecuperarMarcas)
-app.delete("/Marca/:id", controladorDeleteMarcas)
+app.post("/api/v1.0/Marca/", controladorNuevaMarca)
+app.get("/api/v1.0/Marca/", controladorRecuperarMarcas)
+app.delete("/api/v1.0/Marca/:id", controladorDeleteMarcas)
 
 //El ? al final de :idPadre? => que el parámetro es opcional
-app.post("/Familia/:idPadre?", controladorNuevaFamilia)
-app.get("/Familia/", controladorRecuperarFamilias)
+app.post("/api/v1.0/Familia/:idPadre?", controladorNuevaFamilia)
+app.get("/api/v1.0/Familia/", controladorRecuperarFamilias)
 
 app.listen( 8000,()=>{
     console.log("Express working...");
