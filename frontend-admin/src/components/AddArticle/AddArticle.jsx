@@ -11,7 +11,7 @@ function AddArticle() {
     const [ descripcion, setDescripcion] = useState("")
     const [ precioBruto, setPrecioBruto] = useState("")
     const [ novedad, setNovedad] = useState(true)
-    const [ Marca, setMarca] = useState("")
+    const [ marca, setMarca] = useState("")
 
     /*fetch("http://localhost:8000/Marca/").then( respuesta => {
         respuesta.json().then( datos=> {
@@ -39,7 +39,7 @@ function AddArticle() {
 
     function manejadorSubmit() {
         crearNuevoArticulo (
-            {Denominacion: denominacion, Descripcion: descripcion, PrecioBruto: precioBruto, Novedad: novedad}
+            {denominacion, descripcion, precioBruto, novedad}
             , manejadorRespuesta
             )
     }
@@ -69,7 +69,7 @@ function AddArticle() {
             <label>
                 Selecciona una marca:
                 <select name="Marcas">
-                {Marcas.map( marca => <option value={marca.id}>{marca.nombre}</option> )}
+                {Marcas.map( marca => <option value={marca.id} onInput={(event)=>{setMarca(event.target.value)}}>{marca.nombre}</option> )}
                 </select>
             </label>
 
