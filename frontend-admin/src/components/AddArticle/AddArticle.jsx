@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import {recuperarMarcas, recuperarFamilias} from "../../lib/fetch.mjs" 
+import {recuperarMarcas, recuperarFamilias, crearNuevoArticulo} from "../../lib/fetch.mjs" 
 
 function AddArticle() {
 
@@ -7,10 +7,10 @@ function AddArticle() {
     const [Familias, setFamilias] =useState([])
     const [mostrarFamilia, setmostrarFamilia]=useState(false)
 
-    const [ Denominacion, setDenominacion] = useState("")
-    const [ Descripción, setDescripción] = useState("")
-    const [ PrecioBruto, setPrecioBruto] = useState("")
-    const [ Novedad, setNovedad] = useState(true)
+    const [ denominacion, setDenominacion] = useState("")
+    const [ descripcion, setDescripcion] = useState("")
+    const [ precioBruto, setPrecioBruto] = useState("")
+    const [ novedad, setNovedad] = useState(true)
     const [ Marca, setMarca] = useState("")
 
     /*fetch("http://localhost:8000/Marca/").then( respuesta => {
@@ -26,7 +26,7 @@ function AddArticle() {
     }*/
 
     useEffect(
-        ()=> function manejadorRecuperarMarcas() {
+        ()=> function manejadorRecuperarMarcasyFamilias() {
             recuperarMarcas(setMarcas)
             recuperarFamilias(setFamilias)
         },
@@ -37,24 +37,34 @@ function AddArticle() {
         setmostrarFamilia(!mostrarFamilia)
     }
 
+    function manejadorSubmit() {
+        crearNuevoArticulo (
+            {Denominacion: denominacion, Descripcion: descripcion, PrecioBruto: precioBruto, Novedad: novedad}
+            , manejadorRespuesta
+            )
+    }
+    function manejadorRespuesta(respuesta) {
+        console.log(respuesta);
+    }
+
   return (
     <>
         <h2>Añadir Articulo</h2>
             <label>
                 Denominacion
-                <input type="text"/>
+                <input type="text" value={denominacion} onInput={(event)=>{setDenominacion(event.target.value)}}/>
             </label>
             <label>
                 Descripción
-                <input type="text"/>
+                <input type="text" value={descripcion} onInput={(event)=>{setDescripcion(event.target.value)}}/>
             </label>
             <label>
                 Precio bruto
-                <input type="text"/>
+                <input type="text" value={precioBruto} onInput={(event)=>{setPrecioBruto(event.target.value)}}/>
             </label>
             <label>
+                <input type="checkbox" value={novedad} onInput={(event)=>{setNovedad(event.target.checked)}}/>
                 Novedad
-                <input type="checkbox" value="novedad"/>
             </label>
             <label>
                 Selecciona una marca:
@@ -72,7 +82,7 @@ function AddArticle() {
                 </label>)
             }
         
-            <button>Enviar</button>
+            <button onClick={manejadorSubmit}>Enviar</button>
     </>
   );
 }

@@ -9,7 +9,7 @@ async function recuperarMarcas(setter=()=>{}) {
         }
     } catch (excepcion) {
         console.error(excepcion)
-        alert(excepcion)
+        alert("El servidor no está disponible")
     }
     }
     
@@ -24,11 +24,32 @@ async function recuperarMarcas(setter=()=>{}) {
             }
         } catch (excepcion) {
             console.error(excepcion)
-            alert(excepcion)
+            alert("El servidor no está disponible")
         }
+        }
+
+        async function crearNuevoArticulo(articulo, manejadorResposta=()=>{}) {
+            try {
+                const articuloJSON = JSON.stringify(articulo)
+                const respuesta = await fetch(
+                    "http://localhost:8000/api/v1.0/Articulo/",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: articuloJSON
+                    }
+                )
+                manejadorResposta(respuesta)
+            } catch (excepcion) {
+                console.error(excepcion)
+                alert(excepcion)
+            }
         }
 
     export {
         recuperarMarcas,
-        recuperarFamilias
+        recuperarFamilias,
+        crearNuevoArticulo
     }
