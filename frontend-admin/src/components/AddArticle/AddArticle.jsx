@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import {recuperarMarcas, recuperarFamilias, crearNuevoArticulo} from "../../lib/fetch.mjs" 
+import {recuperarFamilias, crearNuevoArticulo} from "../../lib/fetch.mjs" 
+import Marcas from "../Marcas/Marcas.jsx"
 
 function AddArticle() {
 
-    const [Marcas, setMarcas] = useState([])
     const [Familias, setFamilias] =useState([])
     const [mostrarFamilia, setmostrarFamilia]=useState(false)
 
@@ -11,23 +11,10 @@ function AddArticle() {
     const [ descripcion, setDescripcion] = useState("")
     const [ precioBruto, setPrecioBruto] = useState("")
     const [ novedad, setNovedad] = useState(true)
-    const [ marca, setMarca] = useState("")
-
-    /*fetch("http://localhost:8000/Marca/").then( respuesta => {
-        respuesta.json().then( datos=> {
-            setArticulos(datos)
-        })
-    })*/
-
-    /*async function recuperarArticulos(manexadorDatos) {
-        const respuesta = await fetch("http://localhost:8000/Marca/")
-        const datos = await respuesta.json()
-        setArticulos(datos)
-    }*/
+    const [ MarcaId, setMarcaId] = useState("")
 
     useEffect(
-        ()=> function manejadorRecuperarMarcasyFamilias() {
-            recuperarMarcas(setMarcas)
+        ()=> function manejadorRecuperarFamilias() {
             recuperarFamilias(setFamilias)
         },
         []
@@ -39,7 +26,7 @@ function AddArticle() {
 
     function manejadorSubmit() {
         crearNuevoArticulo (
-            {denominacion, descripcion, precioBruto, novedad}
+            {denominacion, descripcion, precioBruto, novedad, MarcaId}
             , manejadorRespuesta
             )
     }
@@ -68,15 +55,13 @@ function AddArticle() {
             </label>
             <label>
                 Selecciona una marca:
-                <select name="Marcas">
-                {Marcas.map( marca => <option value={marca.id} onInput={(event)=>{setMarca(event.target.value)}}>{marca.nombre}</option> )}
-                </select>
+                <Marcas setMarcaId={setMarcaId} ></Marcas>
             </label>
 
             <button onClick={monstrarFamilias}>Selecciona una familia</button>
             {
                 mostrarFamilia===true &&
-                Familias.map (familia => <label>
+                Familias.map (familia => <label key = {familia.id}>
                 <input type = "checkbox" name = {familia.nombre} value = {familia.id}/>
                 {familia.nombre}
                 </label>)
