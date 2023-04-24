@@ -20,7 +20,7 @@ async function recuperarMarcas(setter=()=>{}) {
                 const datos = await respuesta.json()
                 setter(datos)
             } else {
-                alert("Uuups! No podemos recuperar la lista de marcas. Intentalo de nuevo.")
+                alert("Uuups! No podemos recuperar la lista de Familias. Intentalo de nuevo.")
             }
         } catch (excepcion) {
             console.error(excepcion)

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { recuperarMarcas } from "../../lib/fetch.mjs";
-import Marca from "../Marca/Marca.jsx";
+import Marca from "./Marca/Marca.jsx";
 
 function Marcas({setMarcaId}) {
 

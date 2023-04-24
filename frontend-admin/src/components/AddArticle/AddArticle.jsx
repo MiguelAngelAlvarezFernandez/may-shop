@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react"
-import {recuperarFamilias, crearNuevoArticulo} from "../../lib/fetch.mjs" 
+import { useState} from "react"
+import {crearNuevoArticulo} from "../../lib/fetch.mjs" 
 import Marcas from "../Marcas/Marcas.jsx"
+import Familias from "../Familias/Familias.jsx"
 
 function AddArticle() {
-
-    const [Familias, setFamilias] =useState([])
     const [mostrarFamilia, setmostrarFamilia]=useState(false)
 
     const [ denominacion, setDenominacion] = useState("")
@@ -13,14 +12,9 @@ function AddArticle() {
     const [ novedad, setNovedad] = useState(true)
     const [ MarcaId, setMarcaId] = useState("")
 
-    useEffect(
-        ()=> function manejadorRecuperarFamilias() {
-            recuperarFamilias(setFamilias)
-        },
-        []
-    ) 
 
-    function monstrarFamilias () {
+
+    function mostrarFamilias () {
         setmostrarFamilia(!mostrarFamilia)
     }
 
@@ -58,13 +52,10 @@ function AddArticle() {
                 <Marcas setMarcaId={setMarcaId} ></Marcas>
             </label>
 
-            <button onClick={monstrarFamilias}>Selecciona una familia</button>
+            <button onClick={mostrarFamilias}>Selecciona una familia</button>
             {
                 mostrarFamilia===true &&
-                Familias.map (familia => <label key = {familia.id}>
-                <input type = "checkbox" name = {familia.nombre} value = {familia.id}/>
-                {familia.nombre}
-                </label>)
+                <Familias></Familias>
             }
         
             <button onClick={manejadorSubmit}>Enviar</button>
