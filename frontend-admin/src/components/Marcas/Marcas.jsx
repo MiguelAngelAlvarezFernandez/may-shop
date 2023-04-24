@@ -13,10 +13,14 @@ useEffect(
   []
 ) 
 
+function manejadorChange (event) {
+  setMarcaId (event.target.value)
+}
+
 return (
   <>
-    <select name="Marcas">
-      <Marca setIdMarca={setMarcaId} Marcas={Marcas}></Marca>
+    <select name="Marcas" onChange={manejadorChange}>
+      <Marca Marcas={Marcas}></Marca>
     </select>
   </>
     );

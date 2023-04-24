@@ -28,7 +28,7 @@ async function recuperarMarcas(setter=()=>{}) {
         }
         }
 
-        async function crearNuevoArticulo(articulo, manejadorResposta=()=>{}) {
+        async function crearNuevoArticulo(articulo, manejadorRespuesta=()=>{}) {
             try {
                 const articuloJSON = JSON.stringify(articulo)
                 const respuesta = await fetch(
@@ -41,7 +41,7 @@ async function recuperarMarcas(setter=()=>{}) {
                         body: articuloJSON
                     }
                 )
-                manejadorResposta(respuesta)
+                manejadorRespuesta(respuesta)
             } catch (excepcion) {
                 console.error(excepcion)
                 alert(excepcion)

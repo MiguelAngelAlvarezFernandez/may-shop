@@ -5,12 +5,12 @@ import Familias from "../Familias/Familias.jsx"
 
 function AddArticle() {
     const [mostrarFamilia, setmostrarFamilia]=useState(false)
-
     const [ denominacion, setDenominacion] = useState("")
     const [ descripcion, setDescripcion] = useState("")
     const [ precioBruto, setPrecioBruto] = useState("")
     const [ novedad, setNovedad] = useState(true)
     const [ MarcaId, setMarcaId] = useState("")
+    
 
 
 
@@ -49,7 +49,7 @@ function AddArticle() {
             </label>
             <label>
                 Selecciona una marca:
-                <Marcas setMarcaId={setMarcaId} ></Marcas>
+                <Marcas setMarcaId={setMarcaId}></Marcas>
             </label>
 
             <button onClick={mostrarFamilias}>Selecciona una familia</button>

@@ -1,8 +1,9 @@
-function Marca({setMarcaId,Marcas}) {
+function Marca({Marcas}) {
+
 
     return (
       <>
-       {Marcas.map( marca => <option key = {marca.id} value={marca.id} onClick={(event)=>{setMarcaId(event.target.value)}}>{marca.nombre}</option> )}
+       {Marcas.map( marca => <option key = {marca.id} value={marca.id}>{marca.nombre}</option> )}
       </>
     );
   }
