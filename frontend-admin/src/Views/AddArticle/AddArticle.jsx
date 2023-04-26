@@ -9,7 +9,8 @@ function AddArticle() {
     const [ descripcion, setDescripcion] = useState("")
     const [ precioBruto, setPrecioBruto] = useState("")
     const [ novedad, setNovedad] = useState(true)
-    const [ MarcaId, setMarcaId] = useState("")
+    const estadoMarcaId = useState("")
+    const [ MarcaId, setMarcaId] = estadoMarcaId
     
 
 
@@ -49,7 +50,7 @@ function AddArticle() {
             </label>
             <label>
                 Selecciona una marca:
-                <Marcas setMarcaId={setMarcaId}></Marcas>
+                <Marcas estadoMarcaId={estadoMarcaId}></Marcas>
             </label>
 
             <button onClick={mostrarFamilias}>Selecciona una familia</button>
