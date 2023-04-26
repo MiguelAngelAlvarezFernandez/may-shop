@@ -1,7 +1,7 @@
 import { useState} from "react"
 import {crearNuevoArticulo} from "../../lib/fetch.mjs" 
-import Marcas from "../Marcas/Marcas.jsx"
-import Familias from "../Familias/Familias.jsx"
+import Marcas from "../../components/Marcas/Marcas.jsx"
+import Familias from "../../components/Familias/Familias.jsx"
 
 function AddArticle() {
     const [mostrarFamilia, setmostrarFamilia]=useState(false)

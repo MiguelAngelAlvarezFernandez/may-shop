@@ -1,12 +1,12 @@
 import './App.css';
 import Header from './components/Header/Header';
-import AddArticle from "./components/AddArticle/AddArticle"
+import Navigator from './components/Navigator/Navigator';
 
 function App() {
   return (
     <>
       <Header></Header>
-      <AddArticle></AddArticle>
+      <Navigator></Navigator>
     </>
   );
 }

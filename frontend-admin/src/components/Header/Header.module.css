@@ -16,3 +16,7 @@
     width: 180px;
     border-radius: 100px;
 }
+
+h1 {
+    text-shadow: 3px 3px 12px rgb(241, 210, 232);
+}
