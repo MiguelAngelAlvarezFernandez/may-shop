@@ -10,8 +10,7 @@ function AddArticle() {
     const [ descripcion, setDescripcion] = useState("")
     const [ precioBruto, setPrecioBruto] = useState("")
     const [ novedad, setNovedad] = useState(true)
-    const estadoMarcaId = useState("")
-    const [ MarcaId, setMarcaId] = estadoMarcaId
+    const [ MarcaId, setMarcaId] = useState("")
     
 
 
@@ -51,8 +50,8 @@ function AddArticle() {
                     Novedad
                 </label>
                 <label>
-                    Selecciona una marca:
-                    <Marcas estadoMarcaId={estadoMarcaId}></Marcas>
+                    Marca:
+                    <Marcas setMarcaId={setMarcaId}></Marcas>
                 </label>
 
                 <button onClick={mostrarFamilias}>Selecciona una familia</button>
@@ -61,7 +60,7 @@ function AddArticle() {
                     <Familias></Familias>
                 }
             
-                <button onClick={manejadorSubmit}>Enviar</button>
+                <button onClick={manejadorSubmit} className={styles.button}>Enviar</button>
             </div>
     </>
   );
