@@ -2,6 +2,7 @@ import {Link, Route, Routes, BrowserRouter} from 'react-router-dom'
 import styles from "./Navigator.module.css"
 import Inicio from '../../Views/Inicio/Inicio';
 import AddArticle from '../../Views/AddArticle/AddArticle';
+import AddMarcasAndFamilias from '../../Views/AddMarcasAndFamilias/AddMarcasAndFamilias';
 
 
 function Navigator() {
@@ -22,8 +23,8 @@ function Navigator() {
         <Routes>
             <Route path = '/' element={<Inicio/>}/>
             <Route path = '/AñadirArticulo/' element={<AddArticle/>}/>
-            {/*<Route path = '/AñadirMarcasYFamilias/' element={<AddBrandsAndFamilies/>}/>
-            <Route path = '/ModificarArticulo/' element={<ModifyArticle/>}/>
+            <Route path = '/AñadirMarcasYFamilias/' element={<AddMarcasAndFamilias/>}/>
+            {/*<Route path = '/ModificarArticulo/' element={<ModifyArticle/>}/>
             <Route path = '/AñadirCliente/' element={<AddClient/>}/>
             <Route path = '/ModificarCliente/' element={<ModifyClient/>}/>*/}
         </Routes>
