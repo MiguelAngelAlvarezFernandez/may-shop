@@ -54,13 +54,13 @@ function AddArticle() {
                     <Marcas setMarcaId={setMarcaId}></Marcas>
                 </label>
 
-                <button onClick={mostrarFamilias}>Selecciona una familia</button>
+                <button onClick={mostrarFamilias}>Pincha aquí para seleccionar la familia o familias a las que pertenece el artículo</button>
                 {
                     mostrarFamilia===true &&
                     <Familias></Familias>
                 }
             
-                <button onClick={manejadorSubmit} className={styles.button}>Enviar</button>
+                <button onClick={manejadorSubmit} className={styles.button}>Crear artículo</button>
             </div>
     </>
   );
