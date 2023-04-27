@@ -2,6 +2,7 @@ import { useState} from "react"
 import {crearNuevoArticulo} from "../../lib/fetch.mjs" 
 import Marcas from "../../components/Marcas/Marcas.jsx"
 import Familias from "../../components/Familias/Familias.jsx"
+import styles from "./AddArticle.module.css"
 
 function AddArticle() {
     const [mostrarFamilia, setmostrarFamilia]=useState(false)
@@ -32,34 +33,36 @@ function AddArticle() {
   return (
     <>
         <h2>Añadir Articulo</h2>
-            <label>
-                Denominacion
-                <input type="text" value={denominacion} onInput={(event)=>{setDenominacion(event.target.value)}}/>
-            </label>
-            <label>
-                Descripción
-                <input type="text" value={descripcion} onInput={(event)=>{setDescripcion(event.target.value)}}/>
-            </label>
-            <label>
-                Precio bruto
-                <input type="text" value={precioBruto} onInput={(event)=>{setPrecioBruto(event.target.value)}}/>
-            </label>
-            <label>
-                <input type="checkbox" value={novedad} onInput={(event)=>{setNovedad(event.target.checked)}}/>
-                Novedad
-            </label>
-            <label>
-                Selecciona una marca:
-                <Marcas estadoMarcaId={estadoMarcaId}></Marcas>
-            </label>
+            <div className={styles.form}>
+                <label className={styles.input}>
+                    Denominacion:
+                    <input type="text" value={denominacion} onInput={(event)=>{setDenominacion(event.target.value)}}/>
+                </label>
+                <label className={styles.input}>
+                    Descripción:
+                    <input type="text" value={descripcion} onInput={(event)=>{setDescripcion(event.target.value)}}/>
+                </label>
+                <label className={styles.input}>
+                    Precio bruto:
+                    <input type="text" value={precioBruto} onInput={(event)=>{setPrecioBruto(event.target.value)}}/>
+                </label>
+                <label>
+                    <input type="checkbox" value={novedad} onInput={(event)=>{setNovedad(event.target.checked)}}/>
+                    Novedad
+                </label>
+                <label>
+                    Selecciona una marca:
+                    <Marcas estadoMarcaId={estadoMarcaId}></Marcas>
+                </label>
 
-            <button onClick={mostrarFamilias}>Selecciona una familia</button>
-            {
-                mostrarFamilia===true &&
-                <Familias></Familias>
-            }
-        
-            <button onClick={manejadorSubmit}>Enviar</button>
+                <button onClick={mostrarFamilias}>Selecciona una familia</button>
+                {
+                    mostrarFamilia===true &&
+                    <Familias></Familias>
+                }
+            
+                <button onClick={manejadorSubmit}>Enviar</button>
+            </div>
     </>
   );
 }

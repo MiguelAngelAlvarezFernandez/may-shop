@@ -1,0 +1,17 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    margin:30px;
+    gap: 10px;
+    background: linear-gradient(to bottom right, rgb(241, 210, 232), rgb(111, 21, 84));
+    padding: 40px;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    align-self: center;
+}
