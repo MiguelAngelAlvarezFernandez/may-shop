@@ -1,3 +1,5 @@
+import manejadorExcepciones from "./manejadorExcepciones.mjs"
+
 async function recuperarMarcas(setter=()=>{}) {
     try {
         const respuesta = await fetch("http://localhost:8000/api/v1.0/Marca/")
@@ -8,8 +10,7 @@ async function recuperarMarcas(setter=()=>{}) {
             alert("Uuups! No podemos recuperar la lista de marcas. Intentalo de nuevo.")
         }
     } catch (excepcion) {
-        console.error(excepcion)
-        alert("El servidor no está disponible")
+        manejadorExcepciones(excepcion)
     }
     }
     
@@ -23,8 +24,7 @@ async function recuperarMarcas(setter=()=>{}) {
                 alert("Uuups! No podemos recuperar la lista de Familias. Intentalo de nuevo.")
             }
         } catch (excepcion) {
-            console.error(excepcion)
-            alert("El servidor no está disponible")
+            manejadorExcepciones(excepcion)
         }
         }
 
@@ -43,8 +43,7 @@ async function recuperarMarcas(setter=()=>{}) {
                 )
                 manejadorRespuesta(respuesta)
             } catch (excepcion) {
-                console.error(excepcion)
-                alert(excepcion)
+                manejadorExcepciones(excepcion)
             }
         }
 
@@ -63,8 +62,7 @@ async function recuperarMarcas(setter=()=>{}) {
                 )
                 manejadorRespuesta(respuesta)
             } catch (excepcion){
-                console.error(excepcion)
-                alert(excepcion)
+                manejadorExcepciones(excepcion)
             }
         }
 
