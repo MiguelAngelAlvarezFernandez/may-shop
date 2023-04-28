@@ -1,4 +1,4 @@
-import { useState} from "react"
+import {useState} from "react"
 import {crearNuevoArticulo} from "../../lib/fetch.mjs" 
 import Marcas from "../../components/Marcas/Marcas.jsx"
 import Familias from "../../components/Familias/Familias.jsx"
@@ -12,9 +12,6 @@ function AddArticle() {
     const [ novedad, setNovedad] = useState(true)
     const [ MarcaId, setMarcaId] = useState("")
     
-
-
-
     function mostrarFamilias () {
         setmostrarFamilia(!mostrarFamilia)
     }
@@ -27,6 +24,13 @@ function AddArticle() {
     }
     function manejadorRespuesta(respuesta) {
         console.log(respuesta);
+        if (respuesta.ok) {
+            setDenominacion("")
+            setDescripcion("")
+            setPrecioBruto("")
+            setNovedad(true)
+            setMarcaId("")
+        }
     }
 
   return (
