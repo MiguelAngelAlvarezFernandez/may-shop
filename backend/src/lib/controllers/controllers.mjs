@@ -1,4 +1,4 @@
-import { Articulo, Marca, Familia } from "./db/modelsRelationchips.mjs"
+import { Articulo, Marca, Familia } from "../db/modelsRelationchips.mjs"
 
 async function controladorNuevoArticulo(peticion, respuesta) {
     try {
