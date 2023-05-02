@@ -8,7 +8,7 @@ import {
     controladorDeleteMarcas,
     controladorNuevaFamilia,
     controladorRecuperarFamilias
-} from "./lib/controllers.mjs"
+} from "./lib/controllers/controllers.mjs"
 
 const app = express()
 app.use(cors())
