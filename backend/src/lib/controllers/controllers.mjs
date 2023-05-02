@@ -3,6 +3,7 @@ import { Articulo, Marca, Familia } from "../db/modelsRelationchips.mjs"
 async function controladorNuevoArticulo(peticion, respuesta) {
     try {
         const nuevoArticulo = await Articulo.create(peticion.body)
+        nuevoArticulo.setFamilia(peticion.body.familias)
         respuesta.status(201).send(nuevoArticulo.toJSON())
     } catch (error) {
         respuesta.status(500)
@@ -35,7 +36,7 @@ async function controladorDeleteMarcas (peticion, respuesta) {
         const marcaToDelete = await Marca.findByPk(peticion.params.id)
         if (! marcaToDelete) {respuesta.status(404).send("Marca not found")}
         else {
-            marcaToDelete.destroy()
+            await marcaToDelete.destroy()
             respuesta.status(200).send("Marca borrada")
         }
     }
