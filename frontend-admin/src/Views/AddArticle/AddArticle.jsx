@@ -29,7 +29,8 @@ function AddArticle() {
             setDescripcion("")
             setPrecioBruto("")
             setNovedad(true)
-            setMarcaId("")
+            setMarcaId("0")
+            alert("Articulo creado correctamente")
         }
     }
 
@@ -50,12 +51,12 @@ function AddArticle() {
                     <input type="text" value={precioBruto} onInput={(event)=>{setPrecioBruto(event.target.value)}}/>
                 </label>
                 <label>
-                    <input type="checkbox" value={novedad}  checked = {novedad===true} onInput={()=>{setNovedad(!novedad)}}/>
+                    <input type="checkbox" value={novedad}  checked = {novedad===true} onChange={()=>{setNovedad(!novedad)}}/>
                     Novedad
                 </label>
                 <label>
                     Marca:
-                    <Marcas setMarcaId={setMarcaId}></Marcas>
+                    <Marcas marcaActual={MarcaId} setMarcaId={setMarcaId}></Marcas>
                 </label>
 
                 <button onClick={mostrarFamilias}>Pincha aquí para seleccionar la familia o familias a las que pertenece el artículo</button>
