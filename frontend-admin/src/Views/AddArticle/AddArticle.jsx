@@ -50,7 +50,7 @@ function AddArticle() {
                     <input type="text" value={precioBruto} onInput={(event)=>{setPrecioBruto(event.target.value)}}/>
                 </label>
                 <label>
-                    <input type="checkbox" value={novedad} onInput={(event)=>{setNovedad(event.target.checked)}}/>
+                    <input type="checkbox" value={novedad}  checked = {novedad===true} onInput={()=>{setNovedad(!novedad)}}/>
                     Novedad
                 </label>
                 <label>
