@@ -31,7 +31,8 @@ Familia.hasMany(Familia);
 Familia.belongsTo(Familia, {as: "Subfamilia"});
 
 await db.query('PRAGMA foreign_keys = false;');
-await db.sync({ alter: true })
+//await db.sync({ alter: true })
+await db.sync()
 await db.query('PRAGMA foreign_keys = true;');
 
 export {
