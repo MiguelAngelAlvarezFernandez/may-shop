@@ -1,8 +1,6 @@
 ul {
     display: flex;
     flex-wrap: wrap;
-    gap: unset;
-    justify-content: center;
     list-style-type:none;
     padding: unset;
     background-color: rgb(228, 154, 194);

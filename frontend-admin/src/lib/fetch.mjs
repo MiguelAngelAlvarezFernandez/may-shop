@@ -66,9 +66,29 @@ async function recuperarMarcas(setter=()=>{}) {
             }
         }
 
+        async function crearNuevaFamilia (nombre, manejadorRespuesta = ()=>{}) {
+            try {
+                const familiaJSON = JSON.stringify(nombre)
+                const respuesta = await fetch (
+                    "http://localhost:8000/api/v1.0/Familia/",
+                    {
+                        method : "POST",
+                        headers : {
+                            "Content-Type": "application/json"
+                        },  
+                        body : familiaJSON  
+                    }
+                )
+                manejadorRespuesta(respuesta)
+            } catch (excepcion){
+                manejadorExcepciones(excepcion)
+            }
+        }
+
     export {
         recuperarMarcas,
         recuperarFamilias,
         crearNuevoArticulo,
-        crearNuevaMarca
+        crearNuevaMarca,
+        crearNuevaFamilia
     }

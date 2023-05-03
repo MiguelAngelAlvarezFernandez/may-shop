@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { crearNuevaMarca } from "../../lib/fetch.mjs";
+import { crearNuevaFamilia } from "../../lib/fetch.mjs";
 
-function FormAddMarcas() {
+function FormAddFamilias() {
 
-    const [nombre, setNombre] = useState("")
+    const[nombre, setNombre] = useState("")
 
-    function manejadorInput (event) {
-        setNombre (event.target.value)
+    function manejadorInput (event){
+        setNombre(event.target.value)
     }
 
     function manejadorSubmit () {
-        crearNuevaMarca ({nombre}
+        crearNuevaFamilia({nombre}
         , manejadorRespuesta)
     }
 
@@ -21,16 +21,16 @@ function FormAddMarcas() {
 
     return (
       <>
-        <h2>Añadir Nueva Marca</h2>
+        <h2>Añadir Nueva Familia</h2>
         <div>
             <label>
-                Nombre Marca
+                Nombre Familia
                 <input type="text" value={nombre} onInput={manejadorInput}/>
             </label>
-            <button onClick={manejadorSubmit}>Crear Marca</button>
+            <button onClick={manejadorSubmit}>Crear Familia</button>
         </div>
       </>
     );
   }
   
-  export default FormAddMarcas;
+  export default FormAddFamilias;
