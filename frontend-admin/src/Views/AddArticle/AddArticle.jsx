@@ -11,7 +11,7 @@ function AddArticle() {
     const [ precioBruto, setPrecioBruto] = useState("")
     const [ novedad, setNovedad] = useState(true)
     const [ MarcaId, setMarcaId] = useState("")
-    const [arrayFamilias, setArrayFamilias] = useState ([])
+    const [familias, setFamilias] = useState ([])
     
     function mostrarFamilias () {
         setmostrarFamilia(!mostrarFamilia)
@@ -19,7 +19,7 @@ function AddArticle() {
 
     function manejadorSubmit() {
         crearNuevoArticulo (
-            {denominacion, descripcion, precioBruto, novedad, MarcaId, arrayFamilias}
+            {denominacion, descripcion, precioBruto, novedad, MarcaId, familias}
             , manejadorRespuesta
             )
     }
@@ -31,7 +31,8 @@ function AddArticle() {
             setPrecioBruto("")
             setNovedad(true)
             setMarcaId("0")
-            setArrayFamilias([])
+            setFamilias([])
+            setmostrarFamilia(false)
             alert("Articulo creado correctamente")
         }
     }
@@ -64,7 +65,7 @@ function AddArticle() {
                 <button onClick={mostrarFamilias}>Pincha aquí para seleccionar la familia o familias a las que pertenece el artículo</button>
                 {
                     mostrarFamilia===true &&
-                    <Familias arrayFamilias={arrayFamilias} setArrayFamilias={setArrayFamilias}></Familias>
+                    <Familias arrayFamilias={familias} setArrayFamilias={setFamilias}></Familias>
                 }
             
                 <button onClick={manejadorSubmit} className={styles.button}>Crear artículo</button>

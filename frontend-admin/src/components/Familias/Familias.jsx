@@ -22,7 +22,7 @@ function Familias({arrayFamilias, setArrayFamilias}) {
 
     return (
       <>
-       {Familias.map (familia => <Familia familia={familia}></Familia> )}
+       {Familias.map (familia => <Familia familia={familia} yDespuesCheck={manejadorClick}></Familia> )}
       </>
     );
   }
