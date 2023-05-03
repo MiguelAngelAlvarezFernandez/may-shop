@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { recuperarMarcas } from "../../lib/fetch.mjs";
 import Marca from "./Marca/Marca.jsx";
 
-function Marcas({marcaActual, setMarcaId}) {
+function Marcas({MarcaId, setMarcaId}) {
 
 const [Marcas, setMarcas] = useState([])
 
@@ -19,7 +19,7 @@ function manejadorChange (event) {
 
 return (
   <>
-    <select name="Marcas" value={marcaActual} onChange={manejadorChange}>
+    <select name="Marcas" value={MarcaId} onChange={manejadorChange}>
       <Marca Marcas={Marcas}></Marca>
     </select>
   </>

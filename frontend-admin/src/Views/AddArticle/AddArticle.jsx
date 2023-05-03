@@ -58,7 +58,7 @@ function AddArticle() {
                 </label>
                 <label>
                     Marca:
-                    <Marcas marcaActual={MarcaId} setMarcaId={setMarcaId}></Marcas>
+                    <Marcas MarcaId={MarcaId} setMarcaId={setMarcaId}></Marcas>
                 </label>
 
                 <button onClick={mostrarFamilias}>Pincha aquí para seleccionar la familia o familias a las que pertenece el artículo</button>
