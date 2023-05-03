@@ -29,7 +29,7 @@ return (
       <Marca Marcas={Marcas}></Marca>
     </select>
     <button onClick={manejadorCrearMarca}>Crear Marca</button>
-    <Link to="/AñadirMarcasYFamilias/">Crear Marca</Link>
+    <span>Para crear una nueva marca pincha <Link to="/AñadirMarcasYFamilias/">aquí</Link></span>
   </>
     );
   }
