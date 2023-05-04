@@ -39,8 +39,10 @@ function AddArticle() {
 
   return (
     <>
-        <h2>Añadir Articulo</h2>
             <div className={styles.form}>
+            <fieldset>
+            <legend className={styles.legend}>Añadir Articulo</legend>
+                <div className={styles.innerform}>
                 <label className={styles.input}>
                     Denominacion:
                     <input type="text" value={denominacion} onInput={(event)=>{setDenominacion(event.target.value)}}/>
@@ -69,7 +71,10 @@ function AddArticle() {
                 }
             
                 <button onClick={manejadorSubmit} className={styles.button}>Crear artículo</button>
+                </div>
+                </fieldset>
             </div>
+        
     </>
   );
 }

@@ -1,10 +1,24 @@
 .form {
+    border: solid white;
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 40px; 
+    border-radius: 10px; 
+}
+
+.innerform {
     display: flex;
     flex-direction: column;
     margin:30px;
     gap: 10px;
-    background: linear-gradient(to bottom right, rgb(241, 210, 232), rgb(111, 21, 84));
-    padding: 40px;
+}
+
+.legend{
+    font-size: larger;
+    border: solid white;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .input{
