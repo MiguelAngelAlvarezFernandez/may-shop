@@ -66,11 +66,11 @@ async function recuperarMarcas(setter=()=>{}) {
             }
         }
 
-        async function crearNuevaFamilia (nombre, manejadorRespuesta = ()=>{}) {
+        async function crearNuevaFamilia (nombre, idPadre, manejadorRespuesta = ()=>{}) {
             try {
-                const familiaJSON = JSON.stringify(nombre)
+                const familiaJSON = JSON.stringify({nombre})
                 const respuesta = await fetch (
-                    "http://localhost:8000/api/v1.0/Familia/",
+                    `http://localhost:8000/api/v1.0/Familia/${idPadre}`,
                     {
                         method : "POST",
                         headers : {

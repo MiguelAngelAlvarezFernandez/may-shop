@@ -65,7 +65,7 @@ function AddArticle() {
                         Marca:
                         <Marcas MarcaId={MarcaId} setMarcaId={setMarcaId}></Marcas>
                     </label>
-                    <BotonEnrutado texto="Crear Marca" ruta ='/AñadirMarcasYFamilias/'/> 
+                    <BotonEnrutado texto="Ir a crear marca si no existe" ruta ='/AñadirMarcasYFamilias/'/> 
                 </div>
                 <button onClick={mostrarFamilias}>Pincha aquí para seleccionar la familia o familias a las que pertenece el artículo</button>
                 {
