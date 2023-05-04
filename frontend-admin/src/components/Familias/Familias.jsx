@@ -6,9 +6,7 @@ function Familias({arrayFamilias, setArrayFamilias}) {
     const [Familias, setFamilias] =useState([])
 
     useEffect(
-        ()=> function manejadorRecuperarFamilias() {
-            recuperarFamilias(setFamilias)
-        },
+        ()=> {recuperarFamilias(setFamilias)},
         []
     ) 
 
