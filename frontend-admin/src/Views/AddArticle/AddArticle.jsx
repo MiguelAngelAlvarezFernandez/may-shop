@@ -3,6 +3,7 @@ import {crearNuevoArticulo} from "../../lib/fetch.mjs"
 import Marcas from "../../components/Marcas/Marcas.jsx"
 import Familias from "../../components/Familias/Familias.jsx"
 import styles from "./AddArticle.module.css"
+import BotonEnrutado from "../../components/BotonEnrutado/BotonEnrutado.jsx"
 
 function AddArticle() {
     const [mostrarFamilia, setmostrarFamilia]=useState(false)
@@ -59,11 +60,13 @@ function AddArticle() {
                     <input type="checkbox" value={novedad}  checked = {novedad===true} onChange={()=>{setNovedad(!novedad)}}/>
                     Novedad
                 </label>
-                <label>
-                    Marca:
-                    <Marcas MarcaId={MarcaId} setMarcaId={setMarcaId}></Marcas>
-                </label>
-
+                <div>
+                    <label>
+                        Marca:
+                        <Marcas MarcaId={MarcaId} setMarcaId={setMarcaId}></Marcas>
+                    </label>
+                    <BotonEnrutado texto="Crear Marca" ruta ='/AñadirMarcasYFamilias/'/> 
+                </div>
                 <button onClick={mostrarFamilias}>Pincha aquí para seleccionar la familia o familias a las que pertenece el artículo</button>
                 {
                     mostrarFamilia===true &&
