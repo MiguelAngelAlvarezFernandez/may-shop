@@ -18,8 +18,10 @@ function FormAddFamilias() {
     }
 
     function manejadorRespuesta(respuesta) {
-        console.log(respuesta);
+        console.log(respuesta)
         setNombre("")
+        setmostrarFamilia(false)
+
     }
 
     function manejadorRadio(evento) {
