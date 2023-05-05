@@ -4,6 +4,7 @@ async function controladorNuevoArticulo(peticion, respuesta) {
     try {
         const nuevoArticulo = await Articulo.create(peticion.body)
         nuevoArticulo.setFamilia(peticion.body.familias)
+        await nuevoArticulo.createFoto({datos: peticion.body.fichero})
         respuesta.status(201).send(nuevoArticulo.toJSON())
     } catch (error) {
         respuesta.status(500)

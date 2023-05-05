@@ -4,6 +4,7 @@ import Marcas from "../../components/Marcas/Marcas.jsx"
 import Familias from "../../components/Familias/Familias.jsx"
 import styles from "./AddArticle.module.css"
 import BotonEnrutado from "../../components/BotonEnrutado/BotonEnrutado.jsx"
+import { aDataURL } from "../../lib/ficheros.mjs"
 
 function AddArticle() {
     const [mostrarFamilia, setmostrarFamilia]=useState(false)
@@ -13,14 +14,21 @@ function AddArticle() {
     const [ novedad, setNovedad] = useState(true)
     const [ MarcaId, setMarcaId] = useState("")
     const [familias, setFamilias] = useState ([])
+    const [fichero, setFichero] = useState()
     
     function mostrarFamilias () {
         setmostrarFamilia(!mostrarFamilia)
     }
 
+    function manejadorFichero(event){
+        const fichero = event.target.files[0]
+        if (fichero) aDataURL(fichero, setFichero)
+        else setFichero("")
+    }
+
     function manejadorSubmit() {
         crearNuevoArticulo (
-            {denominacion, descripcion, precioBruto, novedad, MarcaId, familias}
+            {denominacion, descripcion, precioBruto, novedad, MarcaId, familias, fichero}
             , manejadorRespuesta
             )
     }
@@ -34,6 +42,7 @@ function AddArticle() {
             setMarcaId("0")
             setFamilias([])
             setmostrarFamilia(false)
+            setFichero()
             alert("Articulo creado correctamente")
         }
     }
@@ -72,6 +81,12 @@ function AddArticle() {
                     mostrarFamilia===true &&
                     <Familias arrayFamilias={familias} setArrayFamilias={setFamilias}></Familias>
                 }
+
+                <label>
+                    Añadir imagen articulo
+                    <input type="file" onInput={manejadorFichero}/>
+                    { fichero && <img src={fichero} alt="Privisualizacion imagen"/>}
+                </label>
             
                 <button onClick={manejadorSubmit} className={styles.button}>Crear artículo</button>
                 </div>
