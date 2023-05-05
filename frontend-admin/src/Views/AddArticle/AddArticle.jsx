@@ -53,42 +53,52 @@ function AddArticle() {
             <fieldset>
             <legend className={styles.legend}>Añadir Articulo</legend>
                 <div className={styles.innerform}>
-                <label className={styles.input}>
-                    Denominacion:
-                    <input type="text" value={denominacion} onInput={(event)=>{setDenominacion(event.target.value)}}/>
-                </label>
-                <label className={styles.input}>
-                    Descripción:
-                    <input type="text" value={descripcion} onInput={(event)=>{setDescripcion(event.target.value)}}/>
-                </label>
-                <label className={styles.input}>
-                    Precio bruto:
-                    <input type="text" value={precioBruto} onInput={(event)=>{setPrecioBruto(event.target.value)}}/>
-                </label>
-                <label>
-                    <input type="checkbox" value={novedad}  checked = {novedad===true} onChange={()=>{setNovedad(!novedad)}}/>
-                    Novedad
-                </label>
-                <div>
-                    <label>
-                        Marca:
-                        <Marcas MarcaId={MarcaId} setMarcaId={setMarcaId}></Marcas>
-                    </label>
-                    <BotonEnrutado texto="Ir a crear marca si no existe" ruta ='/AñadirMarcasYFamilias/'/> 
-                </div>
-                <button onClick={mostrarFamilias}>Pincha aquí para seleccionar la familia o familias a las que pertenece el artículo</button>
-                {
-                    mostrarFamilia===true &&
-                    <Familias arrayFamilias={familias} setArrayFamilias={setFamilias}></Familias>
-                }
+                    <fieldset>
+                    <legend>Datos Articulo</legend>
+                        <label className={styles.input}>
+                            Denominacion:
+                            <input type="text" value={denominacion} onInput={(event)=>{setDenominacion(event.target.value)}}/>
+                        </label>
+                        <label className={styles.input}>
+                            Descripción:
+                            <input type="text" value={descripcion} onInput={(event)=>{setDescripcion(event.target.value)}}/>
+                        </label>
+                        <label className={styles.input}>
+                            Precio bruto:
+                            <input type="text" value={precioBruto} onInput={(event)=>{setPrecioBruto(event.target.value)}}/>
+                        </label>
+                        <label>
+                            <input type="checkbox" value={novedad}  checked = {novedad===true} onChange={()=>{setNovedad(!novedad)}}/>
+                            Novedad
+                        </label>
+                    </fieldset>
 
-                <label>
-                    Añadir imagen articulo
-                    <input type="file" onInput={manejadorFichero}/>
-                    { fichero && <img src={fichero} alt="Privisualizacion imagen"/>}
-                </label>
-            
-                <button onClick={manejadorSubmit} className={styles.button}>Crear artículo</button>
+                    <fieldset className={styles.campoMarca}>
+                    <legend>Marca Artículo</legend>
+                        <Marcas MarcaId={MarcaId} setMarcaId={setMarcaId}></Marcas>
+                        <BotonEnrutado texto="Ir a crear marca si no existe" ruta ='/AñadirMarcasYFamilias/'/> 
+                    </fieldset>
+
+                    <fieldset className={styles.campoFamilias}>
+                    <legend>Familias Artículo</legend>
+                        <div className={styles.Familias}>
+                            <button onClick={mostrarFamilias}>Pincha aquí para seleccionar la familia o familias a las que pertenece el artículo</button>
+                            <div className={styles.arrayFamilias}>
+                            {
+                                mostrarFamilia===true &&
+                                <Familias arrayFamilias={familias} setArrayFamilias={setFamilias}></Familias>
+                            }
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset className={styles.campoImagenes}>
+                    <legend>Imagenes</legend>
+                        <input type="file" onInput={manejadorFichero}/>
+                        { fichero && <img src={fichero} alt="Previsualizacion imagen" width="100px" height="100px"/>}
+                    </fieldset>
+                
+                    <button onClick={manejadorSubmit} className={styles.button}>Crear artículo</button>
                 </div>
                 </fieldset>
             </div>

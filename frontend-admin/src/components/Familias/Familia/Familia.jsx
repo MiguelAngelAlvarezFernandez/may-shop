@@ -11,7 +11,7 @@ function Familia({familia, yDespuesCheck}) {
 
     return (
       <>
-       <label key = {familia.id}>
+       <label>
             <input type = "checkbox" name={familia.nombre} value={familia.id} checked={check} onChange={manejadorCheck} />
             {familia.nombre}
         </label>
