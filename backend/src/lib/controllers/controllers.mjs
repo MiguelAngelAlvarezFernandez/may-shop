@@ -12,6 +12,15 @@ async function controladorNuevoArticulo(peticion, respuesta) {
     }
 }
 
+async function controladorRecuperarArticulos(_, respuesta) {
+    try {
+        respuesta.json(await Articulo.findAll({include:["Fotos"]}))
+    } catch (error) {
+        respuesta.status(500)
+        respuesta.send('Error.')
+    }
+}
+
 async function controladorNuevaMarca(peticion, respuesta) {
     try {
         const nuevaMarca = await Marca.create(peticion.body)
@@ -75,6 +84,7 @@ async function controladorRecuperarFamilias(_, respuesta) {
 
 export {
     controladorNuevoArticulo,
+    controladorRecuperarArticulos,
     controladorNuevaMarca,
     controladorRecuperarMarcas,
     controladorDeleteMarcas,

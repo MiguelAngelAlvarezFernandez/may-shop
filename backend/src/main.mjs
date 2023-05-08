@@ -7,7 +7,8 @@ import {
     controladorRecuperarMarcas,
     controladorDeleteMarcas,
     controladorNuevaFamilia,
-    controladorRecuperarFamilias
+    controladorRecuperarFamilias,
+    controladorRecuperarArticulos
 } from "./lib/controllers/controllers.mjs"
 
 const app = express()
@@ -16,6 +17,7 @@ app.use(express.json({limit: '4mb'}))
 
 
 app.post("/api/v1.0/Articulo/", controladorNuevoArticulo)
+app.get("/api/v1.0/Articulo/", controladorRecuperarArticulos)
 
 app.post("/api/v1.0/Marca/", controladorNuevaMarca)
 app.get("/api/v1.0/Marca/", controladorRecuperarMarcas)
