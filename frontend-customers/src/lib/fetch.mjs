@@ -7,7 +7,7 @@ async function recuperarArticulos(setter=()=>{}) {
             const datos = await respuesta.json()
             setter(datos)
         } else {
-            alert("Uuups! No podemos recuperar la lista de marcas. Intentalo de nuevo.")
+            alert("Uuups! No podemos recuperar la lista de articulos. Intentalo de nuevo.")
         }
     } catch (excepcion) {
         manejadorExcepciones(excepcion)
