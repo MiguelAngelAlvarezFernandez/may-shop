@@ -3,6 +3,7 @@ import cors from "cors"
 
 import { 
     controladorNuevoArticulo,
+    controladorDeleteArticulos,
     controladorNuevaMarca,
     controladorRecuperarMarcas,
     controladorDeleteMarcas,
@@ -18,6 +19,7 @@ app.use(express.json({limit: '4mb'}))
 
 app.post("/api/v1.0/Articulo/", controladorNuevoArticulo)
 app.get("/api/v1.0/Articulo/", controladorRecuperarArticulos)
+app.delete("/api/v1.0/Articulo/:id", controladorDeleteArticulos)
 
 app.post("/api/v1.0/Marca/", controladorNuevaMarca)
 app.get("/api/v1.0/Marca/", controladorRecuperarMarcas)
