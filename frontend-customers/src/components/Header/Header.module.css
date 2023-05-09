@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-image: linear-gradient(to bottom right, rgb(241, 210, 232), rgb(111, 21, 84));
+}
+
+.title {
+    font-size: 80px;
+    color: rgb(18, 2, 2);
+    font-family: serif;
+}
+
+.logoMayShop {
+    height: 150px;
+    width: 150px;
+    border-radius: 100px;
+}
+
+h1 {
+    text-shadow: 3px 3px 12px rgb(241, 210, 232);
+}
