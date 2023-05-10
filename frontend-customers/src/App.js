@@ -1,12 +1,15 @@
 import './App.css';
-import Articulos from './components/Articulos/Articulos';
 import Header from './components/Header/Header';
+import Navigator from './components/Navigator/Navigator';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <>
-    <Header/>
-    <Articulos/>
+    <BrowserRouter>
+      <Header/>
+      <Navigator/>
+    </BrowserRouter>
     </>
   );
 }

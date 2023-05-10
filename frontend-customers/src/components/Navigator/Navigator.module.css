@@ -1,0 +1,28 @@
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type:none;
+    padding: unset;
+    background-color: rgb(228, 154, 194);
+    margin: unset;
+    border: solid white;
+}
+
+a {
+   color: black; 
+   text-decoration: none;
+   font-size: larger;
+}
+
+li{
+    padding: 5px 20px;
+}
+
+li:hover{
+    background-color: rgb(219, 85, 157);
+}
+
+.Carrito{
+    display:none
+}

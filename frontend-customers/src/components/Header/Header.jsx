@@ -1,6 +1,8 @@
 import styles from "./Header.module.css"
 import logoMayShop from "../Header/Imagenes/logoMayShop.png"
 import carritoCompra from "../Header/Imagenes/carritoCompra.png"
+import { Link } from "react-router-dom";
+
 
 function Header() {
     return (
@@ -9,7 +11,9 @@ function Header() {
         <h1 className={styles.title}>MAY BEAUTY SHOP</h1>
         <div className={styles.containerCarrito}>
           <div className={styles.contadorCarrito}>0</div>
-          <img className={styles.carritoCompra} src={carritoCompra} alt="Carrito Compra"/>
+          <Link to={'/Carrito/'}> 
+            <img className={styles.carritoCompra} src={carritoCompra} alt="Carrito Compra"/>
+            </Link>
         </div>
       </header>
     );
