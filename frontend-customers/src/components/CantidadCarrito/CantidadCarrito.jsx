@@ -16,10 +16,10 @@ function CantidadCarrito({articulo}) {
   }
 
   function manejadorClickCarrito(){
-    const nuevoArticulo = {articulo}
+    const nuevoArticulo = { articulo, cantidad }
     const nuevoCarrito=[...carrito]
     nuevoCarrito.push(nuevoArticulo)
-    setCarrito([...nuevoCarrito])
+    setCarrito(nuevoCarrito)
   }
 
 
