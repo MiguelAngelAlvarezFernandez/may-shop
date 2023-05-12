@@ -16,14 +16,14 @@ function Carrito() {
             <th>Precio</th>
             <th>Importe</th>
         </tr>
-        {carrito.map(articuloCarrito =>
-        <tr className={styles.tableData}>
-          <td>{articuloCarrito.cantidad}</td>
-          <td>{articuloCarrito.articulo.denominacion}</td>
-          <td className={styles.precioBruto}>{articuloCarrito.articulo.precioBruto}€</td>
-          <td className={styles.importe}>{articuloCarrito.cantidad*articuloCarrito.articulo.precioBruto}€</td>
-        </tr>
-      )}
+          {carrito.map(articuloCarrito =>
+          <tr className={styles.tableData}>
+            <td>{articuloCarrito.cantidad}</td>
+            <td>{articuloCarrito.articulo.denominacion}</td>
+            <td className={styles.precioBruto}>{articuloCarrito.articulo.precioBruto}€</td>
+            <td className={styles.importe}>{articuloCarrito.cantidad*articuloCarrito.articulo.precioBruto}€</td>
+          </tr>
+          )}
       </table>
       </>
     );

@@ -29,6 +29,7 @@ function CantidadCarrito({articulo}) {
         <p> {cantidad} </p>
         <button onClick={restaCantidad}>-</button>
         <button onClick={sumaCantidad}>+</button>
+
       </div>
     );
   }
