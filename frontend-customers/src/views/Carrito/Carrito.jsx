@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CarritoContext } from "../../App";
+import styles from "./Carrito.module.css"
 
 function Carrito() {
 
@@ -7,15 +8,23 @@ function Carrito() {
 
     return (
       <>
-      <h3>VISTA CARRITO</h3>
-      {carrito.map(articuloCarrito =>
-      <div>
-      <div>{articuloCarrito.cantidad}</div>
-      <div>{articuloCarrito.articulo.denominacion}</div>
-      <div>{articuloCarrito.articulo.precioBruto}</div>
-      <div>{articuloCarrito.cantidad*articuloCarrito.articulo.precioBruto}</div>
-      </div>
+      <h3>TU CARRITO</h3>
+      <table className={styles.table}>
+        <tr className={styles.tableHeader}>
+            <th>Unidades</th>
+            <th>Articulo</th>
+            <th>Precio</th>
+            <th>Importe</th>
+        </tr>
+        {carrito.map(articuloCarrito =>
+        <tr className={styles.tableData}>
+          <td>{articuloCarrito.cantidad}</td>
+          <td>{articuloCarrito.articulo.denominacion}</td>
+          <td className={styles.precioBruto}>{articuloCarrito.articulo.precioBruto}€</td>
+          <td className={styles.importe}>{articuloCarrito.cantidad*articuloCarrito.articulo.precioBruto}€</td>
+        </tr>
       )}
+      </table>
       </>
     );
   }
