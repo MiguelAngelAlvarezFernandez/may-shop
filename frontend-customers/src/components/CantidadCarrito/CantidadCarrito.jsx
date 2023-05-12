@@ -16,10 +16,14 @@ function CantidadCarrito({articulo}) {
   }
 
   function manejadorClickCarrito(){
+    if (cantidad > 0) {
     const nuevoArticulo = { articulo, cantidad }
     const nuevoCarrito=[...carrito]
     nuevoCarrito.push(nuevoArticulo)
     setCarrito(nuevoCarrito)
+    } else {
+      alert("La cantidad debe de ser mayor que cero")
+    }
   }
 
 

@@ -17,7 +17,7 @@ function Header() {
           <div className={styles.contadorCarrito}>{carrito.length>0 ? carrito.length : 0}</div>
           <Link to={'/Carrito/'}> 
             <img className={styles.carritoCompra} src={carritoCompra} alt="Carrito Compra"/>
-            </Link>
+          </Link>
         </div>
       </header>
     );
