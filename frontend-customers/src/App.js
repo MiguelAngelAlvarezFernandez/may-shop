@@ -8,7 +8,7 @@ const CarritoContext = createContext()
 
 function App() {
 
-  const  stateCarrito = useState([])
+  const  stateCarrito = useState({})
 
   return (
     <>
