@@ -1,4 +1,4 @@
-import { Articulo, Marca, Familia, Foto } from "../db/modelsRelationchips.mjs"
+import { Articulo, Marca, Familia, Foto, Carrito, DetalleCarrito } from "../db/modelsRelationchips.mjs"
 
 async function controladorNuevoArticulo(peticion, respuesta) {
     try {
@@ -109,6 +109,20 @@ async function controladorRecuperarFamilias(_, respuesta) {
     }
 }
 
+async function controladorRecuperarCarrito (_, respuesta){
+    try {
+        const [carrito] = await Carrito.findOrCreate 
+        ({where: {pedidoFirme: false},
+        include: [Articulo]}
+        )
+        respuesta.json(carrito)
+    } catch{
+        console.error(error)
+        respuesta.status(500)
+        respuesta.send('Error.')
+    }
+}
+
 export {
     controladorNuevoArticulo,
     controladorRecuperarArticulos,
@@ -117,5 +131,6 @@ export {
     controladorRecuperarMarcas,
     controladorDeleteMarcas,
     controladorNuevaFamilia,
-    controladorRecuperarFamilias
+    controladorRecuperarFamilias,
+    controladorRecuperarCarrito
 }

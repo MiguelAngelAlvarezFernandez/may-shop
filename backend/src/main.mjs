@@ -9,7 +9,8 @@ import {
     controladorDeleteMarcas,
     controladorNuevaFamilia,
     controladorRecuperarFamilias,
-    controladorRecuperarArticulos
+    controladorRecuperarArticulos,
+    controladorRecuperarCarrito
 } from "./lib/controllers/controllers.mjs"
 
 const app = express()
@@ -28,6 +29,8 @@ app.delete("/api/v1.0/Marca/:id", controladorDeleteMarcas)
 //El ? al final de :idPadre? => que el parámetro es opcional
 app.post("/api/v1.0/Familia/:idPadre?", controladorNuevaFamilia)
 app.get("/api/v1.0/Familia/", controladorRecuperarFamilias)
+
+app.get("/api/v1.0/Carrito/Articulos/", controladorRecuperarCarrito)
 
 app.listen( 8000,()=>{
     console.log("Express working...");
