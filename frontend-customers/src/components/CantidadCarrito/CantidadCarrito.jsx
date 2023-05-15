@@ -1,12 +1,19 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import styles from "./CantidadCarrito.module.css"
 import { CarritoContext } from "../../App";
 
 function CantidadCarrito({articulo}) {
 
-  const[cantidad, setCantidad]=useState(0)
   const[carrito, setCarrito]=useContext(CarritoContext)
+  const[cantidad, setCantidad]=useState(0)
   const[mensaje, setMensaje]=useState("")
+
+  useEffect(
+    ()=>{
+      if ( articulo.id in carrito ) setCantidad(carrito[articulo.id].cantidad)
+    },
+    [carrito]
+  )
 
   function sumaCantidad(){
     setCantidad(cantidad+1)

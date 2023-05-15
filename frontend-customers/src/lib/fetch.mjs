@@ -12,8 +12,23 @@ async function recuperarArticulos(setter=()=>{}) {
     } catch (excepcion) {
         manejadorExcepciones(excepcion)
     }
+}
+
+async function recuperarCarrito(setter=()=>{}) {
+    try {
+        const respuesta = await fetch("http://localhost:8000/api/v1.0/Carrito/Articulos/")
+        if (respuesta.ok) {
+            const datos = await respuesta.json()
+            setter(datos)
+        } else {
+            alert("Uuups! No podemos recuperar tu carrito")
+        }
+    } catch (excepcion) {
+        manejadorExcepciones(excepcion)
     }
+}
 
 export {
-    recuperarArticulos 
+    recuperarArticulos,
+    recuperarCarrito 
 }

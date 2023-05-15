@@ -2,13 +2,23 @@ import './App.css';
 import Header from './components/Header/Header';
 import Navigator from './components/Navigator/Navigator';
 import { BrowserRouter } from 'react-router-dom';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 const CarritoContext = createContext()
 
 function App() {
 
   const  stateCarrito = useState({})
+
+  useEffect(
+    traerCarrito,
+    []
+  )
+
+  function traerCarrito() {
+    const [_, setCarrito] = stateCarrito
+    fetchCarrito(setCarrito)
+  }
 
   return (
     <>
