@@ -17,17 +17,6 @@ function App() {
     },[]
   )
 
-  // Dani
-  /*useEffect(
-    traerCarrito,
-    []
-  )*/
-
-  /*function traerCarrito() {
-    const [_, setCarrito] = stateCarrito
-    recuperarCarrito(setCarrito)
-  }*/
-
   return (
     <>
     <BrowserRouter>

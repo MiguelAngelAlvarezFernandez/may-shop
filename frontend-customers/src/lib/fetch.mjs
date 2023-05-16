@@ -33,7 +33,27 @@ async function recuperarCarrito(setter=()=>{}) {
     }
 }
 
+async function aumentarDetalleCarrito (detalleCarrito, manejadorRespuesta = ()=>{}) {
+    try {
+        const detalleJSON = JSON.stringify(detalleCarrito)
+        const respuesta = await fetch (
+            `http://localhost:8000/api/v1.0/DetalleCarrito/`,
+            {
+                method : "PUT",
+                headers : {
+                    "Content-Type": "application/json"
+                },  
+                body : detalleJSON  
+            }
+        )
+        manejadorRespuesta(respuesta)
+    } catch (excepcion){
+        manejadorExcepciones(excepcion)
+    }
+}
+
 export {
     recuperarArticulos,
-    recuperarCarrito 
+    recuperarCarrito,
+    aumentarDetalleCarrito
 }
