@@ -3,6 +3,7 @@ import Header from './components/Header/Header';
 import Navigator from './components/Navigator/Navigator';
 import { BrowserRouter } from 'react-router-dom';
 import { createContext, useEffect, useState } from 'react';
+import { recuperarCarrito } from './lib/fetch.mjs';
 
 const CarritoContext = createContext()
 
@@ -11,14 +12,21 @@ function App() {
   const  stateCarrito = useState({})
 
   useEffect(
-    traerCarrito,
-    []
+    ()=> {const [_, setCarrito] = stateCarrito;
+    recuperarCarrito(setCarrito)
+    },[]
   )
 
-  function traerCarrito() {
+  // Dani
+  /*useEffect(
+    traerCarrito,
+    []
+  )*/
+
+  /*function traerCarrito() {
     const [_, setCarrito] = stateCarrito
-    fetchCarrito(setCarrito)
-  }
+    recuperarCarrito(setCarrito)
+  }*/
 
   return (
     <>

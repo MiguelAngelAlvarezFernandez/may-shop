@@ -1,17 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CarritoContext } from "../../App";
 import styles from "./Carrito.module.css"
-/*import {recuperarCarrito} from "../../lib/fetch.mjs"*/
 
 function Carrito() {
 
-  const[carrito, setCarrito]=useContext(CarritoContext)
+  const[carrito]=useContext(CarritoContext)
 
-  /*useEffect(
-    ()=> {
-        recuperarCarrito(setCarrito)
-    },[]
-  ) */
+
 
     return (
       <>
