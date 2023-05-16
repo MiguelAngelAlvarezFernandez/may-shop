@@ -1,4 +1,5 @@
 import { Articulo, Marca, Familia, Foto, Carrito, DetalleCarrito } from "../db/modelsRelationchips.mjs"
+import {Op} from "sequelize"
 
 async function controladorNuevoArticulo(peticion, respuesta) {
     try {
@@ -116,7 +117,25 @@ async function controladorRecuperarCarrito (_, respuesta){
         include: [Articulo]}
         )
         respuesta.json(carrito)
-    } catch{
+    } catch (error){
+        console.error(error)
+        respuesta.status(500)
+        respuesta.send('Error.')
+    }
+}
+
+async function controladorActualizarDetalleCarrito(peticion, respuesta){
+    try{ 
+        const detallesAActualizar = await DetalleCarrito.findOne({ 
+            where: { [Op.and]: [ {ArticuloId: peticion.body.ArticuloId}, 
+            {CarritoId: peticion.body.CarritoId} ] }})
+            if (! detallesAActualizar) {
+                respuesta.status(404).send("Detalle not found")
+            }
+            else {detallesAActualizar.update(peticion.body)
+                respuesta.status(200).send("OK")
+            }
+    } catch(error){
         console.error(error)
         respuesta.status(500)
         respuesta.send('Error.')
@@ -132,5 +151,6 @@ export {
     controladorDeleteMarcas,
     controladorNuevaFamilia,
     controladorRecuperarFamilias,
-    controladorRecuperarCarrito
+    controladorRecuperarCarrito,
+    controladorActualizarDetalleCarrito
 }
