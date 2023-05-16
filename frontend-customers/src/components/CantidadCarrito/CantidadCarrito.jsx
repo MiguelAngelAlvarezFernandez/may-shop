@@ -8,9 +8,13 @@ function CantidadCarrito({articulo}) {
   const[cantidad, setCantidad]=useState(0)
   const[mensaje, setMensaje]=useState("")
 
+  /*El useEffect permite que la cantidad y mensaje se "mantengan"
+  en la vista principal*/
   useEffect(
     ()=>{
-      if ( articulo.id in carrito ) setCantidad(carrito[articulo.id].cantidad)
+      if ( articulo.id in carrito ) 
+      {setCantidad(carrito[articulo.id].cantidad);
+      setMensaje("Articulo añadido a carrito")}
     },
     [carrito]
   )
