@@ -20,6 +20,7 @@ async function recuperarCarrito(setter=()=>{}) {
         if (respuesta.ok) {
             const datos = await respuesta.json()
             const nuevoCarrito={}
+            nuevoCarrito.id = datos.id
             datos.Articulos.forEach( 
                 articulo => nuevoCarrito[articulo.id] = 
                 { articulo, cantidad: articulo.DetalleCarrito.cantidad } 
@@ -33,7 +34,7 @@ async function recuperarCarrito(setter=()=>{}) {
     }
 }
 
-async function aumentarDetalleCarrito (detalleCarrito, manejadorRespuesta = ()=>{}) {
+async function variarCantidadDetalleCarrito (detalleCarrito, manejadorRespuesta = ()=>{}) {
     try {
         const detalleJSON = JSON.stringify(detalleCarrito)
         const respuesta = await fetch (
@@ -52,8 +53,28 @@ async function aumentarDetalleCarrito (detalleCarrito, manejadorRespuesta = ()=>
     }
 }
 
+async function añadirDetalleCarrito(nuevoDetalle, setter=()=>{}) {
+    try {
+        const nuevoDetalleJSON = JSON.stringify(nuevoDetalle)
+        const respuesta = await fetch(
+            "http://localhost:8000/api/v1.0/DetalleCarrito/",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: nuevoDetalleJSON 
+            }
+        )
+        setter(respuesta)
+    } catch (excepcion) {
+        manejadorExcepciones(excepcion)
+    }
+}
+
 export {
     recuperarArticulos,
     recuperarCarrito,
-    aumentarDetalleCarrito
+    variarCantidadDetalleCarrito,
+    añadirDetalleCarrito
 }

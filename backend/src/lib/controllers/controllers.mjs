@@ -142,6 +142,17 @@ async function controladorActualizarDetalleCarrito(peticion, respuesta){
     }
 }
 
+async function controladorPostDetalleCarrito(peticion, respuesta) {
+    try {
+        const nuevoDetalleCarrito = await DetalleCarrito.create(peticion.body)
+        respuesta.status(201).send(nuevoDetalleCarrito.toJSON())
+    } catch (error) {
+        console.error(error)
+        respuesta.status(500)
+        respuesta.send('Error.')
+    }
+}
+
 export {
     controladorNuevoArticulo,
     controladorRecuperarArticulos,
@@ -152,5 +163,6 @@ export {
     controladorNuevaFamilia,
     controladorRecuperarFamilias,
     controladorRecuperarCarrito,
-    controladorActualizarDetalleCarrito
+    controladorActualizarDetalleCarrito,
+    controladorPostDetalleCarrito
 }

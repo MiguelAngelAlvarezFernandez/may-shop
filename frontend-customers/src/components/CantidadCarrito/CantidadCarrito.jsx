@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import styles from "./CantidadCarrito.module.css"
 import { CarritoContext } from "../../App";
-import { aumentarDetalleCarrito, recuperarCarrito } from "../../lib/fetch.mjs"
+import { recuperarCarrito, variarCantidadDetalleCarrito, añadirDetalleCarrito } from "../../lib/fetch.mjs"
 
 function CantidadCarrito({articulo}) {
 
@@ -29,24 +29,44 @@ function CantidadCarrito({articulo}) {
   )
 
   async function sumaCantidad(){
-    ++detalleCarrito.cantidad
-    await aumentarDetalleCarrito(detalleCarrito, manejadorRespuesta)
-    recuperarCarrito(setCarrito)
+    // si ! articulo.id in carrito
+    if (! (articulo.id in carrito)) 
+    // fetch post detallearticulo articulo.id carrito.id articulo.precioBruto
+    {
+      const nuevoDetalle = {
+        precioBruto: articulo.precioBruto, 
+        ArticuloId: articulo.id, 
+        cantidad: 1,
+        CarritoId: carrito.id};
+        añadirDetalleCarrito (nuevoDetalle, setDetalleCarrito)
+        recuperarCarrito(setCarrito)
+    } else {
+    // almacenamos respuesta en detallesCarrito
+      ++detalleCarrito.cantidad
+      await variarCantidadDetalleCarrito(detalleCarrito, manejadorRespuesta)
+      recuperarCarrito(setCarrito)
+    } 
   }
+
+  async function restaCantidad(){
+    --detalleCarrito.cantidad
+    // si cantidad < 1
+    // fetch delete detalleCarrito
+    // recupera carrito
+    // return
+    await variarCantidadDetalleCarrito(detalleCarrito, manejadorRespuesta)
+    recuperarCarrito(setCarrito)
+    // TODO fetch update DetalleCarrito y recuperar carrito
+    //setCantidad(cantidad>0 ? cantidad-1 : 0) 
+  }
+
   function manejadorRespuesta (respuesta){
     console.log(respuesta)
     }
-  
-
-  function restaCantidad(){
-    // TODO fetch update DetalleCarrito y recuperar carrito
-    setCantidad(cantidad>0 ? cantidad-1 : 0) 
-  }
 
   function manejadorClickCarrito(){
-    if (cantidad > 0) {
+    if (cantidad > 0 && ! articulo.id in carrito) {
       const nuevoCarrito = {...carrito}
-      if ( ! articulo.id in nuevoCarrito ) {} // TODO fetch añada articulo al carrito y recuperar carrito
       //nuevoCarrito[articulo.id] = { articulo: articulo, cantidad: cantidad }
       //setCarrito(nuevoCarrito)
       setMensaje("Articulo añadido a carrito")

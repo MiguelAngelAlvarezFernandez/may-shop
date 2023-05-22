@@ -11,7 +11,8 @@ import {
     controladorRecuperarFamilias,
     controladorRecuperarArticulos,
     controladorRecuperarCarrito,
-    controladorActualizarDetalleCarrito
+    controladorActualizarDetalleCarrito,
+    controladorPostDetalleCarrito
 } from "./lib/controllers/controllers.mjs"
 
 const app = express()
@@ -33,6 +34,7 @@ app.get("/api/v1.0/Familia/", controladorRecuperarFamilias)
 
 app.get("/api/v1.0/Carrito/Articulos/", controladorRecuperarCarrito)
 
+app.post("/api/v1.0/DetalleCarrito/", controladorPostDetalleCarrito)
 app.put("/api/v1.0/DetalleCarrito/", controladorActualizarDetalleCarrito)
 
 app.listen( 8000,()=>{
