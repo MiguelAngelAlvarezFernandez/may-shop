@@ -72,9 +72,29 @@ async function añadirDetalleCarrito(nuevoDetalle, setter=()=>{}) {
     }
 }
 
+async function deleteDetalleCarrito (artToDelete, manejadorRespuesta = ()=>{}) {
+    try {
+        const detalleJSON = JSON.stringify(artToDelete)
+        const respuesta = await fetch (
+            `http://localhost:8000/api/v1.0/DetalleCarrito/`,
+            {
+                method : "DELETE",
+                headers : {
+                    "Content-Type": "application/json"
+                },  
+                body : detalleJSON  
+            }
+        )
+        manejadorRespuesta(respuesta)
+    } catch (excepcion){
+        manejadorExcepciones(excepcion)
+    }
+}
+
 export {
     recuperarArticulos,
     recuperarCarrito,
     variarCantidadDetalleCarrito,
-    añadirDetalleCarrito
+    añadirDetalleCarrito,
+    deleteDetalleCarrito
 }

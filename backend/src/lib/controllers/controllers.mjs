@@ -153,6 +153,44 @@ async function controladorPostDetalleCarrito(peticion, respuesta) {
     }
 }
 
+async function controladorDeleteDetalleCarrito (peticion, respuesta) {
+    try{
+        const detalleToDelete = await DetalleCarrito.findOne({ 
+            where: { [Op.and]: [ {ArticuloId: peticion.body.ArticuloId}, 
+            {CarritoId: peticion.body.CarritoId} ] }})
+            if (! detalleToDelete) {
+                respuesta.status(404).send("Detalle not found")
+            }
+            else {detalleToDelete.destroy(peticion.body)
+                respuesta.status(200).send("Articulo eliminado de carrito")
+            }
+    } catch(error){
+        console.error(error)
+        respuesta.status(500)
+        respuesta.send('Error.')
+    }
+}
+
+        /*const detalleToDelete = await Articulo.findByPk(peticion.params.id)
+        if (! articuloToDelete) {respuesta.status(404).send("Articulo not found")}
+        else {
+            const fotosToDelete = await articuloToDelete.getFotos()
+            fotosToDelete.forEach( async foto => {
+                if (await foto.countArticulos() <= 1) {
+                    foto.destroy()
+                }
+            });
+            await articuloToDelete.destroy()
+            respuesta.status(200).send("Articulo borrado")
+        }
+    }
+    catch(error){
+        console.error(error)
+        respuesta.status(500)
+        respuesta.send('Error.')
+    }
+}*/
+
 export {
     controladorNuevoArticulo,
     controladorRecuperarArticulos,
@@ -164,5 +202,6 @@ export {
     controladorRecuperarFamilias,
     controladorRecuperarCarrito,
     controladorActualizarDetalleCarrito,
-    controladorPostDetalleCarrito
+    controladorPostDetalleCarrito,
+    controladorDeleteDetalleCarrito
 }
