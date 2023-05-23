@@ -9,7 +9,7 @@ const CarritoContext = createContext()
 
 function App() {
 
-  const  stateCarrito = useState({})
+  const  stateCarrito = useState({id: null, articulos: {}})
 
   useEffect(
     ()=> {const [_, setCarrito] = stateCarrito;

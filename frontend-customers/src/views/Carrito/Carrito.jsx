@@ -6,8 +6,6 @@ function Carrito() {
 
   const[carrito]=useContext(CarritoContext)
 
-
-
     return (
       <>
       <h3>TU CARRITO</h3>
@@ -21,7 +19,7 @@ function Carrito() {
           </tr>
         </thead>
           <tbody>
-          {Object.values(carrito).map(articuloCarrito =>
+          {Object.values(carrito.articulos).map(articuloCarrito =>
             <tr key={articuloCarrito.articulo.id} className={styles.tableData}>
               <td>{articuloCarrito.cantidad}</td>
               <td>{articuloCarrito.articulo.denominacion}</td>

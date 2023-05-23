@@ -19,10 +19,9 @@ async function recuperarCarrito(setter=()=>{}) {
         const respuesta = await fetch("http://localhost:8000/api/v1.0/Carrito/Articulos/")
         if (respuesta.ok) {
             const datos = await respuesta.json()
-            const nuevoCarrito={}
-            nuevoCarrito.id = datos.id
+            const nuevoCarrito={ id: datos.id, articulos: {}}
             datos.Articulos.forEach( 
-                articulo => nuevoCarrito[articulo.id] = 
+                articulo => nuevoCarrito.articulos[articulo.id] = 
                 { articulo, cantidad: articulo.DetalleCarrito.cantidad } 
                 )
             setter(nuevoCarrito)
