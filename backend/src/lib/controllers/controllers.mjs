@@ -171,25 +171,6 @@ async function controladorDeleteDetalleCarrito (peticion, respuesta) {
     }
 }
 
-        /*const detalleToDelete = await Articulo.findByPk(peticion.params.id)
-        if (! articuloToDelete) {respuesta.status(404).send("Articulo not found")}
-        else {
-            const fotosToDelete = await articuloToDelete.getFotos()
-            fotosToDelete.forEach( async foto => {
-                if (await foto.countArticulos() <= 1) {
-                    foto.destroy()
-                }
-            });
-            await articuloToDelete.destroy()
-            respuesta.status(200).send("Articulo borrado")
-        }
-    }
-    catch(error){
-        console.error(error)
-        respuesta.status(500)
-        respuesta.send('Error.')
-    }
-}*/
 
 export {
     controladorNuevoArticulo,
