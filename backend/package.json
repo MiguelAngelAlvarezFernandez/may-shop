@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/main.mjs",
-	  "dev": "nodemon src/main.mjs"
+    "dev": "nodemon src/main.mjs"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +17,8 @@
     "nodemon": "^2.0.22",
     "sequelize": "^6.31.0",
     "sqlite3": "^5.1.6"
+  },
+  "dependencies": {
+    "stripe": "^12.6.0"
   }
 }
