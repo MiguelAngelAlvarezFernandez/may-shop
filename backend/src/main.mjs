@@ -1,21 +1,32 @@
 import express from "express"
 import cors from "cors"
-
-import { 
+import {
     controladorNuevoArticulo,
-    controladorDeleteArticulos,
+    controladorRecuperarArticulos,
+    controladorDeleteArticulos
+} from "./lib/controllers/articuloControllers.mjs"
+
+import {
     controladorNuevaMarca,
     controladorRecuperarMarcas,
-    controladorDeleteMarcas,
+    controladorDeleteMarcas
+} from "./lib/controllers/marcaControllers.mjs"
+
+import {
     controladorNuevaFamilia,
-    controladorRecuperarFamilias,
-    controladorRecuperarArticulos,
-    controladorRecuperarCarrito,
+    controladorRecuperarFamilias
+} from "./lib/controllers/familiaControllers.mjs"
+
+import {
     controladorActualizarDetalleCarrito,
     controladorPostDetalleCarrito,
-    controladorDeleteDetalleCarrito,
+    controladorDeleteDetalleCarrito
+} from "./lib/controllers/detalleCarritoControllers.mjs"
+
+import { 
+    controladorRecuperarCarrito,
     controladorFormalizarCarrito
-} from "./lib/controllers/controllers.mjs"
+} from "./lib/controllers/carritoControllers.mjs"
 
 const app = express()
 app.use(cors())
