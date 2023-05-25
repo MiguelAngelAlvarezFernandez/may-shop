@@ -39,7 +39,8 @@ async function controladorFormalizarCarrito(peticion, respuesta){
                   });
 
                 console.log(paymentIntent)
-                respuesta.status(200).send("OK")
+                console.log(paymentIntent.client_secret)
+                respuesta.json(paymentIntent.client_secret)
             }
     } catch(error){
         console.error(error)

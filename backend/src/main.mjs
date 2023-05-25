@@ -52,7 +52,6 @@ app.put("/api/v1.0/DetalleCarrito/", controladorActualizarDetalleCarrito)
 app.delete("/api/v1.0/DetalleCarrito/", controladorDeleteDetalleCarrito)
 app.put("/api/v1.0/Carrito/", controladorFormalizarCarrito)
 
-
 app.listen( 8000,()=>{
     console.log("Express working...");
 })

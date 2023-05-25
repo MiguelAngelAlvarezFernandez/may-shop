@@ -29,6 +29,8 @@ function Carrito() {
           )}
           </tbody>
       </table>
+
+      <button>Formalizar Carrito </button>
       </>
     );
   }
