@@ -90,10 +90,31 @@ async function deleteDetalleCarrito (artToDelete, manejadorRespuesta = ()=>{}) {
     }
 }
 
+async function formalizarCarrito (CarritoId, setter = ()=>{}) {
+    try {
+        const carritoFormalizarJSON = JSON.stringify(CarritoId)
+        const respuesta = await fetch (
+            `http://localhost:8000/api/v1.0/Carrito/`,
+            {
+                method : "PUT",
+                headers : {
+                    "Content-Type": "application/json"
+                },  
+                body : carritoFormalizarJSON  
+            }
+        )
+        const datos = await respuesta.json()
+        setter(datos)
+    } catch (excepcion){
+        manejadorExcepciones(excepcion)
+    }
+}
+
 export {
     recuperarArticulos,
     recuperarCarrito,
     variarCantidadDetalleCarrito,
     añadirDetalleCarrito,
-    deleteDetalleCarrito
+    deleteDetalleCarrito,
+    formalizarCarrito
 }

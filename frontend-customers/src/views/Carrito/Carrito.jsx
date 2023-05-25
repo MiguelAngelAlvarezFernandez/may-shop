@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CarritoContext } from "../../App";
 import styles from "./Carrito.module.css"
+import { Link } from "react-router-dom";
 
 function Carrito() {
 
@@ -29,8 +30,9 @@ function Carrito() {
           )}
           </tbody>
       </table>
-
+      <Link to={'/Carrito/CheckoutForm/'}> 
       <button>Formalizar Carrito </button>
+      </Link>
       </>
     );
   }
