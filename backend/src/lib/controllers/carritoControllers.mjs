@@ -38,8 +38,6 @@ async function controladorFormalizarCarrito(peticion, respuesta){
                     },
                   });
 
-                console.log(paymentIntent)
-                console.log(paymentIntent.client_secret)
                 respuesta.json(paymentIntent.client_secret)
             }
     } catch(error){
