@@ -3,7 +3,7 @@ import { formalizarCarrito } from "../../lib/fetch.mjs";
 import { CarritoContext } from "../../App";
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
-import {PaymentElement} from '@stripe/react-stripe-js';
+import CheckoutFormChild from "./CheckoutFormChild.jsx";
 
 const stripePromise = loadStripe('pk_test_Dt4ZBItXSZT1EzmOd8yCxonL');
 
@@ -17,8 +17,6 @@ function CheckoutForm() {
     ,[]
   )
 
- 
-
     return (
       <>
         {
@@ -27,10 +25,7 @@ function CheckoutForm() {
           clientSecret: secreto,
           appearance: {},
            }}>
-            <form>
-              <PaymentElement />
-              <button>Submit</button>
-            </form>
+            <CheckoutFormChild/>
           </Elements>
         }
       </>
