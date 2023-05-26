@@ -8,13 +8,13 @@ function CheckoutForm() {
   const [secreto, setSecreto] = useState("")
 
   useEffect(
-    ()=>{formalizarCarrito(carrito.id, setSecreto)}
+    ()=>{formalizarCarrito({CarritoId: carrito.id}, setSecreto)}
     ,[]
   )
 
     return (
       <>
-        <p>Hola, soy la vista formulario {secreto}</p>
+        <p>No lo cuentes esto es un secreto: {secreto}</p>
       </>
     );
   }
