@@ -1,0 +1,23 @@
+.container{
+    border: solid;
+    border-radius: 20px;
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    background-color: rgb(175, 92, 164);
+}
+
+p{
+    font-size: 20px;
+    color: rgb(18, 2, 2);
+    font-family: serif;
+    text-align: center;
+    font-weight: bold;
+}
+
+.gif{
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin: auto;
+}
