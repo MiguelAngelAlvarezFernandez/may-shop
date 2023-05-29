@@ -7,7 +7,7 @@
     background-color: rgb(175, 92, 164);
 }
 
-p{
+.container > p{
     font-size: 20px;
     color: rgb(18, 2, 2);
     font-family: serif;
