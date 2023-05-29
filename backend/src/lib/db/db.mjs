@@ -1,5 +1,7 @@
 import { Sequelize }  from 'sequelize';
 
+let dbOptions
+
 switch (process.env.NODE_ENV) {
     case 'production':
     case 'staging':
