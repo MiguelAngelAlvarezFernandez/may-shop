@@ -31,7 +31,7 @@ function Carrito() {
           </tbody>
       </table>
       <Link to={'/Carrito/CheckoutForm/'}> 
-      <button>Formalizar Carrito </button>
+      <button className={styles.buttonFormalizar}>Formalizar Carrito </button>
       </Link>
       </>
     );

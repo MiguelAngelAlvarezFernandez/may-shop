@@ -41,3 +41,18 @@ tr:nth-child(even){background-color: #f2f2f2;}
 tr:nth-child(odd){background-color: white;}
 
 tr:hover {background-color: #ddd;}
+
+.buttonFormalizar {
+    margin: auto;
+    display: block;
+    margin-top: 40px;
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    border: solid;
+}
+
+.buttonFormalizar:hover{
+    box-shadow: 8px 8px 100px rgb(241, 210, 232);
+}
