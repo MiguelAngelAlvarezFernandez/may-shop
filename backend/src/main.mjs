@@ -26,7 +26,7 @@ import {
 import { 
     controladorRecuperarCarrito,
     controladorFormalizarCarrito,
-    // webhookController
+    webhookController
 } from "./lib/controllers/carritoControllers.mjs"
 
 const app = express()
@@ -53,7 +53,7 @@ app.put("/api/v1.0/DetalleCarrito/", controladorActualizarDetalleCarrito)
 app.delete("/api/v1.0/DetalleCarrito/", controladorDeleteDetalleCarrito)
 
 app.put("/api/v1.0/Carrito/", controladorFormalizarCarrito)
-// app.post('/webhook', webhookController)
+app.post('/api/v1.0/webhook/', webhookController)
 
 app.listen( process.env.PORT || 8000, ()=>{
     console.log("Express working...");

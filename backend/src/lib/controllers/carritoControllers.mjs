@@ -1,7 +1,10 @@
 import { Articulo, Carrito, DetalleCarrito } from "../db/modelsRelationchips.mjs"
 import stripeModule from "stripe"
-const stripe = stripeModule('sk_test_CGGvfNiIPwLXiDwaOfZ3oX6Y') 
-// const endpointSecret = 'whsec_...'; (https://stripe.com/docs/webhooks/quickstart)
+const stripe = stripeModule('sk_test_51NDUBMD806yBceajAUxWNFjv3Q2CMD8Lxd6YSpMC1yzsFSgtsabaZp0bwOwFYOnNb5GyKfsQeAIOZkRRV3rnpMLP001bQTdPZh') 
+
+const endpointSecret = "whsec_8a7b960eb011a8b0f929a7e4acb170514ebf9be10898169d0743eb8893c80e01"; 
+
+//(https://stripe.com/docs/webhooks/quickstart)
 
 async function controladorRecuperarCarrito (_, respuesta){
     try {
@@ -48,50 +51,33 @@ async function controladorFormalizarCarrito(peticion, respuesta){
     }
 }
 
-// async function webhookController (request, response) => {
-//     let event = request.body;
-//     // Verify the event if you have an endpoint secret defined.
-//     if (endpointSecret) {
-//       // Get the signature sent by Stripe
-//       const signature = request.headers['stripe-signature'];
-//       try {
-//         event = stripe.webhooks.constructEvent(
-//           request.body,
-//           signature,
-//           endpointSecret
-//         );
-//       } catch (err) {
-//         console.log(`⚠️  Webhook signature verification failed.`, err.message);
-//         return response.sendStatus(400);
-//       }
-//     }
+async function webhookController (request, response) {
+    const sig = request.headers['stripe-signature'];
+
+    console.log (request.headers)
+    console.log (request.body)
+    
+    // let event;
+
+    // try {
+    //     event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+    //   } catch (err) {
+    //     response.status(400).send(`Webhook Error: ${err.message}`);
+    //     return;
+    //   }
+    
+    //   // Handle the event
+    //   console.log(`Unhandled event type ${event.type}`);
+    
+    //   // Return a 200 response to acknowledge receipt of the event
+     response.send();
+  };
   
-//     // Handle the event
-//     switch (event.type) {
-//       case 'payment_intent.succeeded':
-//         const paymentIntent = event.data.object;
-//         console.log(`PaymentIntent for ${paymentIntent.amount} was successful!`);
-//         // Then define and call a method to handle the successful payment intent.
-//         // handlePaymentIntentSucceeded(paymentIntent);
-//         break;
-//       case 'payment_method.attached':
-//         const paymentMethod = event.data.object;
-//         // Then define and call a method to handle the successful attachment of a PaymentMethod.
-//         // handlePaymentMethodAttached(paymentMethod);
-//         break;
-//       default:
-//         // Unexpected event type
-//         console.log(`Unhandled event type ${event.type}.`);
-//     }
-  
-//     // Return a 200 response to acknowledge receipt of the event
-//     response.send();
-//   });
 
 
 
 export {
     controladorRecuperarCarrito,
     controladorFormalizarCarrito,
-    // webhookController
+    webhookController
 }
