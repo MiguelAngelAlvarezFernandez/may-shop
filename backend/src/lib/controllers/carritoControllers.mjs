@@ -41,6 +41,9 @@ async function controladorFormalizarCarrito(peticion, respuesta){
                       enabled: true,
                     },
                   });
+                
+                const carritoToUpdate = await Carrito.findByPk (peticion.body.CarritoId)
+                carritoToUpdate.update ({paymentIntentId: paymentIntent.id})
 
                 respuesta.json(paymentIntent.client_secret)
             }
@@ -54,8 +57,8 @@ async function controladorFormalizarCarrito(peticion, respuesta){
 async function webhookController (request, response) {
     const sig = request.headers['stripe-signature'];
 
-    console.log (request.headers)
-    console.log (request.body)
+    // console.log (request.headers)
+    // console.log (request.body)
     
     // let event;
 
