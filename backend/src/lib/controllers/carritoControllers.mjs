@@ -25,7 +25,7 @@ async function controladorFormalizarCarrito(peticion, respuesta){
         const CarritoAFormalizar = await DetalleCarrito.findAll({ 
             where: { CarritoId: peticion.body.CarritoId} })
             if (! CarritoAFormalizar) {
-                respuesta.status(404).send("Carrito not found")
+                return respuesta.status(404).send("Carrito not found")
         
             }
             else {
@@ -58,7 +58,7 @@ async function webhookController (request, response) {
     const sig = request.headers['stripe-signature'];
 
     //console.log (request.headers)
-    //console.log (request.body)
+    console.log (request.body)
     
     let event;
 
@@ -68,6 +68,7 @@ async function webhookController (request, response) {
         response.status(400).send(`Webhook Error: ${err.message}`);
         return;
       }
+      response.send();
     
     switch (event.type) {
     case 'payment_intent.succeeded':
@@ -83,7 +84,6 @@ async function webhookController (request, response) {
         console.log(`Unhandled event type ${event.type}`);
     }
     
-     response.send();
   };
   
 
