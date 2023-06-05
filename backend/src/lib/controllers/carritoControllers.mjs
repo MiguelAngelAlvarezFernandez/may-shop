@@ -2,7 +2,7 @@ import { Articulo, Carrito, DetalleCarrito } from "../db/modelsRelationchips.mjs
 import stripeModule from "stripe"
 const stripe = stripeModule('sk_test_51NDUBMD806yBceajAUxWNFjv3Q2CMD8Lxd6YSpMC1yzsFSgtsabaZp0bwOwFYOnNb5GyKfsQeAIOZkRRV3rnpMLP001bQTdPZh') 
 
-const endpointSecret = "whsec_8a7b960eb011a8b0f929a7e4acb170514ebf9be10898169d0743eb8893c80e01"; 
+const endpointSecret = process.env.STRIPE_WH_SECRET; 
 
 //(https://stripe.com/docs/webhooks/quickstart)
 
@@ -44,7 +44,7 @@ async function controladorFormalizarCarrito(peticion, respuesta){
                 
                 const carritoToUpdate = await Carrito.findByPk (peticion.body.CarritoId)
                 carritoToUpdate.update ({paymentIntentId: paymentIntent.id})
-
+              
                 respuesta.json(paymentIntent.client_secret)
             }
     } catch(error){
@@ -57,22 +57,32 @@ async function controladorFormalizarCarrito(peticion, respuesta){
 async function webhookController (request, response) {
     const sig = request.headers['stripe-signature'];
 
-    // console.log (request.headers)
-    // console.log (request.body)
+    //console.log (request.headers)
+    //console.log (request.body)
     
-    // let event;
+    let event;
 
-    // try {
-    //     event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
-    //   } catch (err) {
-    //     response.status(400).send(`Webhook Error: ${err.message}`);
-    //     return;
-    //   }
+    try {
+        event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+      } catch (err) {
+        response.status(400).send(`Webhook Error: ${err.message}`);
+        return;
+      }
     
-    //   // Handle the event
-    //   console.log(`Unhandled event type ${event.type}`);
+    switch (event.type) {
+    case 'payment_intent.succeeded':
+        const paymentIntentSucceeded = event.data.object;
+        console.log (paymentIntentSucceeded)
+
+        const carritoToEnd = await Carrito.findByPk (paymentIntentSucceeded.id)
+        carritoToEnd.update ({pedidoFirme: true})
+
+        // Then define and call a function to handle the event payment_intent.succeeded
+        break;
+    default:
+        console.log(`Unhandled event type ${event.type}`);
+    }
     
-    //   // Return a 200 response to acknowledge receipt of the event
      response.send();
   };
   
