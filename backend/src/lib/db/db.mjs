@@ -2,8 +2,6 @@ import { Sequelize }  from 'sequelize';
 
 let dbOptions
 
-console.log("production",process.env.NODE_ENV);
-
 switch (process.env.NODE_ENV) {
     case 'production':
     case 'staging':
@@ -19,9 +17,6 @@ switch (process.env.NODE_ENV) {
 }
 
 
-const db = new Sequelize({
-    dialect: 'sqlite',
-    storage: './MayShop.sqlite'
-});
+const db = new Sequelize(dbOptions);
 
 export default db
