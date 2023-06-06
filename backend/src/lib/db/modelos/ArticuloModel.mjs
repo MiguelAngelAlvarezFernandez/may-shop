@@ -6,7 +6,7 @@ const Articulo = db.define('Articulo', {
         type: DataTypes.STRING
     },
     descripcion: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(1234)
     },
     precioBruto: {
         type: DataTypes.DECIMAL
