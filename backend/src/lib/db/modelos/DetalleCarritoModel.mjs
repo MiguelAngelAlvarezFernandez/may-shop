@@ -3,13 +3,13 @@ import db from "../db.mjs"
 
 const DetalleCarrito = db.define('DetalleCarrito', {
     cantidad: {
-        type: DataTypes.NUMBER
+        type: DataTypes.INTEGER
     },
     precioBruto: {
-        type: DataTypes.NUMBER
+        type: DataTypes.FLOAT
     },
     IVA: {
-        type: DataTypes.NUMBER
+        type: DataTypes.FLOAT
     }
 });
 

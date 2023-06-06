@@ -9,7 +9,7 @@ const Cliente = db.define('Cliente', {
         type: DataTypes.STRING
     },
     Telefono: {
-        type: DataTypes.NUMBER
+        type: DataTypes.STRING
     },
     EMail: {
         type: DataTypes.STRING
