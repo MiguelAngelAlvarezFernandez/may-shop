@@ -7,9 +7,7 @@ function Marcas({MarcaId, setMarcaId}) {
 const [Marcas, setMarcas] = useState([])
 
 useEffect(
-  ()=> function manejadorRecuperarMarcas() {
-      recuperarMarcas(setMarcas)
-  },
+  ()=> recuperarMarcas(setMarcas),
   []
 ) 
 
