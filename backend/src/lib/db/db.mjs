@@ -11,7 +11,7 @@ switch (process.env.NODE_ENV) {
     default:
         dbOptions = {
             dialect: 'sqlite',
-            storage: './database.sqlite'
+            storage: './MayShop.sqlite'
         }
         break;
 }
