@@ -1,8 +1,9 @@
 import manejadorExcepciones from "./manejadorExcepciones.mjs"
+import { BACKEND_URL } from "../config.mjs"
 
 async function recuperarMarcas(setter=()=>{}) {
     try {
-        const respuesta = await fetch("http://localhost:8000/api/v1.0/Marca/")
+        const respuesta = await fetch(BACKEND_URL+"/api/v1.0/Marca/")
         if (respuesta.ok) {
             const datos = await respuesta.json()
             setter(datos)
@@ -16,7 +17,7 @@ async function recuperarMarcas(setter=()=>{}) {
     
     async function recuperarFamilias(setter=()=>{}) {
         try {
-            const respuesta = await fetch("http://localhost:8000/api/v1.0/Familia/")
+            const respuesta = await fetch(BACKEND_URL+"/api/v1.0/Familia/")
             if (respuesta.ok) {
                 const datos = await respuesta.json()
                 setter(datos)
@@ -32,7 +33,7 @@ async function recuperarMarcas(setter=()=>{}) {
             try {
                 const articuloJSON = JSON.stringify(articulo)
                 const respuesta = await fetch(
-                    "http://localhost:8000/api/v1.0/Articulo/",
+                    BACKEND_URL+"/api/v1.0/Articulo/",
                     {
                         method: "POST",
                         headers: {
@@ -51,7 +52,7 @@ async function recuperarMarcas(setter=()=>{}) {
             try {
                 const marcaJSON = JSON.stringify(nombre)
                 const respuesta = await fetch (
-                    "http://localhost:8000/api/v1.0/Marca/",
+                    BACKEND_URL+"/api/v1.0/Marca/",
                     {
                         method : "POST",
                         headers : {
@@ -70,7 +71,7 @@ async function recuperarMarcas(setter=()=>{}) {
             try {
                 const familiaJSON = JSON.stringify({nombre})
                 const respuesta = await fetch (
-                    `http://localhost:8000/api/v1.0/Familia/${idPadre}`,
+                    BACKEND_URL+`/api/v1.0/Familia/${idPadre}`,
                     {
                         method : "POST",
                         headers : {
