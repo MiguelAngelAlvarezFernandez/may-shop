@@ -1,4 +1,5 @@
 import {useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
+import { FRONTEND_URL } from '../../config.mjs';
 
 function CheckoutFormChild() {
 
@@ -15,7 +16,7 @@ function CheckoutFormChild() {
         const {error} = await stripe.confirmPayment({
         elements,
         confirmParams: {
-            return_url: 'http://localhost:3000/Carrito/CheckoutForm/ConfirmacionPago/',
+            return_url: FRONTEND_URL+'/Carrito/CheckoutForm/ConfirmacionPago/',
         },
         });
     };

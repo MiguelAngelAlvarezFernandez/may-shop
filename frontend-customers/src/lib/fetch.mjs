@@ -1,8 +1,9 @@
 import manejadorExcepciones from "./manejadorExcepciones.mjs"
+import { BACKEND_URL } from "../config.mjs"
 
 async function recuperarArticulos(setter=()=>{}) {
     try {
-        const respuesta = await fetch("http://localhost:8000/api/v1.0/Articulo/")
+        const respuesta = await fetch(BACKEND_URL+"/api/v1.0/Articulo/")
         if (respuesta.ok) {
             const datos = await respuesta.json()
             setter(datos)
@@ -16,7 +17,7 @@ async function recuperarArticulos(setter=()=>{}) {
 
 async function recuperarCarrito(setter=()=>{}) {
     try {
-        const respuesta = await fetch("http://localhost:8000/api/v1.0/Carrito/Articulos/")
+        const respuesta = await fetch(BACKEND_URL+"/api/v1.0/Carrito/Articulos/")
         if (respuesta.ok) {
             const datos = await respuesta.json()
             const nuevoCarrito={ id: datos.id, articulos: {}}
@@ -37,7 +38,7 @@ async function variarCantidadDetalleCarrito (detalleCarrito, manejadorRespuesta 
     try {
         const detalleJSON = JSON.stringify(detalleCarrito)
         const respuesta = await fetch (
-            `http://localhost:8000/api/v1.0/DetalleCarrito/`,
+            BACKEND_URL+`/api/v1.0/DetalleCarrito/`,
             {
                 method : "PUT",
                 headers : {
@@ -56,7 +57,7 @@ async function añadirDetalleCarrito(nuevoDetalle, setter=()=>{}) {
     try {
         const nuevoDetalleJSON = JSON.stringify(nuevoDetalle)
         const respuesta = await fetch(
-            "http://localhost:8000/api/v1.0/DetalleCarrito/",
+            BACKEND_URL+"/api/v1.0/DetalleCarrito/",
             {
                 method: "POST",
                 headers: {
@@ -75,7 +76,7 @@ async function deleteDetalleCarrito (artToDelete, manejadorRespuesta = ()=>{}) {
     try {
         const detalleJSON = JSON.stringify(artToDelete)
         const respuesta = await fetch (
-            `http://localhost:8000/api/v1.0/DetalleCarrito/`,
+            BACKEND_URL+`/api/v1.0/DetalleCarrito/`,
             {
                 method : "DELETE",
                 headers : {
@@ -94,7 +95,7 @@ async function formalizarCarrito (CarritoId, setter = ()=>{}) {
     try {
         const carritoFormalizarJSON = JSON.stringify(CarritoId)
         const respuesta = await fetch (
-            `http://localhost:8000/api/v1.0/Carrito/`,
+            BACKEND_URL+`/api/v1.0/Carrito/`,
             {
                 method : "PUT",
                 headers : {
