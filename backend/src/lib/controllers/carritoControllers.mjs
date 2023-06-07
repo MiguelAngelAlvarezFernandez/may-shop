@@ -80,9 +80,8 @@ async function webhookController (request, response) {
           } else {
         carritoToEnd.update ({pedidoFirme: true})
           }
-        // Then define and call a function to handle the event payment_intent.succeeded
         break;
-        
+
     default:
         console.log(`Unhandled event type ${event.type}`);
     }
