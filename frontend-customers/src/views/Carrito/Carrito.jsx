@@ -24,7 +24,7 @@ function Carrito() {
             <tr key={articuloCarrito.articulo.id} className={styles.tableData}>
               <td>{articuloCarrito.cantidad}</td>
               <td>{articuloCarrito.articulo.denominacion}</td>
-              <td className={styles.precioBruto}>{articuloCarrito.articulo.precioBruto.toFixed(2)}€</td>
+              <td className={styles.precioBruto}>{(articuloCarrito.articulo.precioBruto).toFixed(2)}€</td>
               <td className={styles.importe}>{(articuloCarrito.cantidad*articuloCarrito.articulo.precioBruto).toFixed(2)}€</td>
             </tr>
           )}
