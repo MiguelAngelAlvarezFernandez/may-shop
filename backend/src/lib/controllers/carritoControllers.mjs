@@ -73,13 +73,16 @@ async function webhookController (request, response) {
     switch (event.type) {
     case 'payment_intent.succeeded':
         const paymentIntentSucceeded = event.data.object;
-        console.log (paymentIntentSucceeded)
-
-        const carritoToEnd = await Carrito.findByPk (paymentIntentSucceeded.id)
+        //console.log (paymentIntentSucceeded)
+        const carritoToEnd = await Carrito.findOne ({where: { paymentIntentId: paymentIntentSucceeded.id}})
+        if (carritoToEnd === null) {
+            return response.status(404).send("Carrito not found");
+          } else {
         carritoToEnd.update ({pedidoFirme: true})
-
+          }
         // Then define and call a function to handle the event payment_intent.succeeded
         break;
+        
     default:
         console.log(`Unhandled event type ${event.type}`);
     }
