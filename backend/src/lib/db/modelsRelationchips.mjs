@@ -31,8 +31,8 @@ Familia.hasMany(Familia);
 Familia.belongsTo(Familia, {as: "Subfamilia"});
 
 if (process.env.NODE_ENV !== "production") await db.query('PRAGMA foreign_keys = false;');
-//await db.sync({ alter: true }) //Si modificamos la BBDD descomentar reiniciar y volver comentar.
-await db.sync()
+await db.sync({ alter: true }) //Si modificamos la BBDD descomentar reiniciar y volver comentar.
+//await db.sync()
 if (process.env.NODE_ENV !== "production") await db.query('PRAGMA foreign_keys = true;');
 
 export {
