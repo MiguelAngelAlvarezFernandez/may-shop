@@ -38,7 +38,7 @@ function CantidadCarrito({articulo}) {
         ArticuloId: articulo.id, 
         cantidad: 1,
         CarritoId: carrito.id};
-        añadirDetalleCarrito (nuevoDetalle, setDetalleCarrito)
+        await añadirDetalleCarrito (nuevoDetalle, setDetalleCarrito)
         recuperarCarrito(setCarrito)
     } else {
       ++detalleCarrito.cantidad
