@@ -9,7 +9,11 @@ const Articulo = db.define('Articulo', {
         type: DataTypes.TEXT
     },
     precioBruto: {
-        type: DataTypes.DECIMAL
+        type: DataTypes.FLOAT,
+        get() {
+            const value = this.getDataValue('precioBruto');
+            return value === null ? null : parseFloat(value);
+        }
     }, 
     novedad: {
         type: DataTypes.BOOLEAN
