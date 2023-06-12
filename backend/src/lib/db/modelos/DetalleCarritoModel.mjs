@@ -6,7 +6,11 @@ const DetalleCarrito = db.define('DetalleCarrito', {
         type: DataTypes.INTEGER
     },
     precioBruto: {
-        type: DataTypes.FLOAT
+        type: DataTypes.FLOAT,
+        get() {
+            const value = this.getDataValue('precioBruto');
+            return value === null ? null : parseFloat(value);
+        }
     },
     IVA: {
         type: DataTypes.FLOAT
