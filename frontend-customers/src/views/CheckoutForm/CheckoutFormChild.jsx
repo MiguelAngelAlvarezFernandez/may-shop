@@ -16,7 +16,7 @@ function CheckoutFormChild() {
         const {error} = await stripe.confirmPayment({
         elements,
         confirmParams: {
-            return_url: FRONTEND_URL+'/Carrito/CheckoutForm/ConfirmacionPago/',
+            return_url: FRONTEND_URL+'Carrito/CheckoutForm/ConfirmacionPago/',
         },
         });
     };
