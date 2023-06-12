@@ -1,22 +1,24 @@
 import { Sequelize }  from 'sequelize';
 
-let dbOptions
+let db
 
 switch (process.env.NODE_ENV) {
     case 'production':
     case 'staging':
-        dbOptions = process.env.DB_URL
+        db = new Sequelize(
+            process.env.DB_URL,
+            {
+                dialectOptions: { decimalNumbers: true }
+            }
+        );
         break;
 
     default:
-        dbOptions = {
+        db = new Sequelize({
             dialect: 'sqlite',
             storage: './MayShop.sqlite'
-        }
+        });
         break;
 }
-
-
-const db = new Sequelize(dbOptions);
 
 export default db
