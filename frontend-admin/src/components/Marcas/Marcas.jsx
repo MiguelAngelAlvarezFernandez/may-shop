@@ -7,7 +7,7 @@ function Marcas({MarcaId, setMarcaId}) {
 const [Marcas, setMarcas] = useState([])
 
 useEffect(
-  ()=> recuperarMarcas(setMarcas),
+  ()=>{recuperarMarcas(setMarcas)},
   []
 ) 
 
