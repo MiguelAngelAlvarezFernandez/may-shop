@@ -57,6 +57,6 @@ app.delete("/api/v1.0/DetalleCarrito/", jsonMiddleware, controladorDeleteDetalle
 app.put("/api/v1.0/Carrito/", jsonMiddleware, controladorFormalizarCarrito)
 app.post('/api/v1.0/webhook/', rawMiddleware, webhookController)
 
-app.listen( process.env.PORT || 8000, ()=>{
+app.listen( process.env.PORT ?? 8000, ()=>{
     console.log("Express working...");
 })
