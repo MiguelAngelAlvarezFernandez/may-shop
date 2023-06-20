@@ -7,10 +7,8 @@ function ConfirmacionPago() {
 
   const[_, setCarrito]=useContext(CarritoContext)
 
-  useEffect(
-    ()=> recuperarCarrito(setCarrito)
-    ,[]
-    )
+  recuperarCarrito(setCarrito)
+  
   
     return (
       <div className={styles.container}>
