@@ -30,7 +30,16 @@ import {
 } from "./lib/controllers/carritoControllers.mjs"
 
 const app = express()
-app.use(cors())
+// app.use(cors())
+
+app.use(
+    cors({
+        origin: [process.env.CORS_ORIGIN_CUSTOMERS, process.env.CORS_ORIGIN_ADMIN] ?? "*",
+        methods: process.env.CORS_METHODS ?? "GET,HEAD,PUT,PATCH,POST,DELETE",
+        preflightContinue: false,
+        optionsSuccessStatus: 204
+    })
+)
 
 const jsonMiddleware = express.json()
 const bigJsonMiddleware = express.json({limit: '4mb'})
