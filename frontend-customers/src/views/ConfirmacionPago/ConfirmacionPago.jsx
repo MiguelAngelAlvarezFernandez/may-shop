@@ -1,14 +1,17 @@
 import Pagao from "./Pagao.gif"
 import styles from "./ConfirmacionPago.module.css"
 import { recuperarCarrito } from "../../lib/fetch.mjs";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CarritoContext } from "../../App";
 
 function ConfirmacionPago() {
 
   const[_, setCarrito]=useContext(CarritoContext)
 
-  recuperarCarrito(setCarrito)
+  useEffect(
+  ()=> {recuperarCarrito(setCarrito)}
+  ,[]
+  )
   
   
     return (
