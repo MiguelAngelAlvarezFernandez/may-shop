@@ -21,7 +21,7 @@ async function recuperarCarrito(setter=()=>{}) {
         if (respuesta.ok) {
             const datos = await respuesta.json()
             const nuevoCarrito={ id: datos.id, articulos: {}}
-            datos.Articulos.forEach( 
+            datos.Articulos?.forEach( 
                 articulo => nuevoCarrito.articulos[articulo.id] = 
                 { articulo, cantidad: articulo.DetalleCarrito.cantidad } 
                 )
